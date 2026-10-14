@@ -2,234 +2,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@Eyoba | My World</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #080808;
-      color: white;
-    }
-
-    section {
-      min-height: 100vh;
-      padding: 80px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .hero {
-      background:
-        radial-gradient(circle at center, #292929 0%, #080808 65%);
-    }
-
-    .small-title {
-      color: #b4b4b4;
-      letter-spacing: 5px;
-      font-size: 13px;
-      margin-bottom: 25px;
-    }
-
-    h1 {
-      font-size: clamp(50px, 12vw, 110px);
-      font-weight: 900;
-      letter-spacing: -4px;
-    }
-
-    .accent {
-      color: #b8ff00;
-    }
-
-    .subtitle {
-      margin-top: 20px;
-      color: #ccc;
-      font-size: 18px;
-    }
-
-    .scroll {
-      margin-top: 60px;
-      color: #b8ff00;
-      font-size: 13px;
-      letter-spacing: 3px;
-    }
-
-    .about {
-      background: #111;
-    }
-
-    h2 {
-      font-size: clamp(32px, 6vw, 58px);
-      margin-bottom: 25px;
-    }
-
-    .description {
-      color: #bbb;
-      max-width: 600px;
-      line-height: 1.8;
-      font-size: 17px;
-      margin-bottom: 35px;
-    }
-
-    .question-card {
-      width: min(100%, 650px);
-      padding: 35px 25px;
-      background: #191919;
-      border: 1px solid #333;
-      border-radius: 20px;
-      margin-top: 20px;
-    }
-
-    .number {
-      color: #b8ff00;
-      letter-spacing: 3px;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    .question {
-      font-size: clamp(23px, 4vw, 34px);
-      margin-bottom: 28px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    button {
-      border: 1px solid #b8ff00;
-      background: transparent;
-      color: white;
-      padding: 14px 32px;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.25s;
-    }
-
-    button:hover {
-      background: #b8ff00;
-      color: #080808;
-      transform: translateY(-3px);
-    }
-
-    .result {
-      margin-top: 25px;
-      line-height: 1.7;
-      font-size: 18px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .angry {
-      font-size: 75px;
-      margin-bottom: 15px;
-    }
-
-    footer {
-      padding: 25px;
-      background: #080808;
-      color: #777;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@Eyoba | My World</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#080808;color:white}
+section{min-height:100vh;padding:70px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.hero{background:radial-gradient(circle,#292929,#080808 70%)}
+.small{color:#aaa;letter-spacing:5px;font-size:13px;margin-bottom:25px}
+h1{font-size:clamp(55px,12vw,110px);letter-spacing:-4px}
+.accent{color:#b8ff00}
+.subtitle{margin-top:20px;color:#ccc;font-size:18px}
+.scroll{margin-top:60px;color:#b8ff00;letter-spacing:3px;font-size:13px}
+.about{background:#111}
+h2{font-size:clamp(32px,6vw,55px);margin-bottom:25px}
+.description{color:#bbb;max-width:600px;line-height:1.8;margin-bottom:30px}
+.card{width:min(100%,650px);padding:35px 25px;background:#191919;border:1px solid #333;border-radius:20px;margin-top:20px}
+.number{color:#b8ff00;letter-spacing:3px;font-size:13px;margin-bottom:18px}
+.question{font-size:clamp(23px,4vw,34px);margin-bottom:28px}
+.buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:15px}
+button{border:1px solid #b8ff00;background:transparent;color:white;padding:14px 32px;border-radius:30px;font-size:16px;font-weight:bold;cursor:pointer}
+button:hover{background:#b8ff00;color:#080808}
+.result{margin-top:25px;line-height:1.7;font-size:18px}
+.hidden{display:none}
+.angry{font-size:75px;margin-bottom:15px}
+footer{padding:25px;text-align:center;color:#777}
+</style>
 </head>
-
 <body>
-  <section class="hero">
-    <p class="small-title">WELCOME TO MY WORLD</p>
-    <h1><span class="accent">@</span>Eyoba</h1>
-    <p class="subtitle">My world. My story. My rules.</p>
-    <p class="scroll">↓ SCROLL TO EXPLORE ↓</p>
-  </section>
+<section class="hero">
+<p class="small">WELCOME TO MY WORLD</p>
+<h1><span class="accent">@</span>Eyoba</h1>
+<p class="subtitle">My world. My story. My rules.</p>
+<p class="scroll">↓ SCROLL TO EXPLORE ↓</p>
+</section>
 
-  <section class="about">
-    <p class="small-title">GET TO KNOW ME</p>
-    <h2>About <span class="accent">Me</span></h2>
-    <p class="description">
-      Welcome to my personal website! This is my space to share my
-      personality, my story, and a little fun. Let's see how well you
-      know Eyob!
-    </p>
+<section class="about">
+<p class="small">GET TO KNOW ME</p>
+<h2>About <span class="accent">Me</span></h2>
+<p class="description">Welcome to my personal website! This is my space to share my personality, my story, and a little fun. Let's see how well you know Eyob!</p>
 
-    <div class="question-card">
-      <p class="number">QUESTION 01</p>
-      <h3 class="question">Do you know Eyob Yeshitla?</h3>
+<div class="card">
+<p class="number">QUESTION 01</p>
+<h3 class="question">Do you know Eyob Yeshitla?</h3>
+<div class="buttons" id="firstButtons">
+<button onclick="answerYes()">YES</button>
+<button onclick="answerNo()">NO</button>
+</div>
 
-      <div class="buttons" id="firstButtons">
-        <button onclick="answerYes()">YES</button>
-        <button onclick="answerNo()">NO</button>
-      </div>
+<div id="noResult" class="result hidden">
+<div class="angry">😡</div>
+<h2>GET OUT OF THIS WEBSITE!</h2>
+<p>You don't know Eyob? How did you get in here? 😂</p>
+<button onclick="resetQuiz()">TRY AGAIN</button>
+</div>
 
-      <div id="noResult" class="result hidden">
-        <div class="angry">😡</div>
-        <h2>GET OUT OF THIS WEBSITE!</h2>
-        <p>You don't know Eyob? How did you get in here? 😂</p>
-        <button onclick="resetQuiz()">TRY AGAIN</button>
-      </div>
+<div id="secondQuestion" class="hidden">
+<p class="number" style="margin-top:35px">QUESTION 02</p>
+<h3 class="question">What is his behavior?</h3>
+<div class="buttons">
+<button onclick="answerBehavior('GOOD')">GOOD</button>
+<button onclick="answerBehavior('BAD')">BAD</button>
+</div>
+<p id="behaviorResult" class="result"></p>
+</div>
+</div>
+</section>
+<footer>© 2026 @Eyoba — My World, My Rules.</footer>
 
-      <div id="secondQuestion" class="hidden">
-        <p class="number" style="margin-top: 35px;">QUESTION 02</p>
-        <h3 class="question">What is his behavior?</h3>
-
-        <div class="buttons">
-          <button onclick="answerBehavior('GOOD')">GOOD</button>
-          <button onclick="answerBehavior('BAD')">BAD</button>
-        </div>
-
-        <p id="behaviorResult" class="result"></p>
-      </div>
-    </div>
-  </section>
-
-  <footer>© 2026 @Eyoba — My World, My Rules.</footer>
-
-  <script>
-    function answerYes() {
-      document.getElementById("firstButtons").classList.add("hidden");
-      document.getElementById("secondQuestion").classList.remove("hidden");
-      document.getElementById("noResult").classList.add("hidden");
-    }
-
-    function answerNo() {
-      document.getElementById("firstButtons").classList.add("hidden");
-      document.getElementById("secondQuestion").classList.add("hidden");
-      document.getElementById("noResult").classList.remove("hidden");
-    }
-
-    function answerBehavior(answer) {
-      const result = document.getElementById("behaviorResult");
-
-      if (answer === "GOOD") {
-        result.textContent = "😎 You know Eyob! Good choice!";
-      } else {
-        result.textContent = "😂 Really? Eyob will remember that!";
-      }
-    }
-
-    function resetQuiz() {
-      document.getElementById("firstButtons").classList.remove("hidden");
-      document.getElementById("secondQuestion").classList.add("hidden");
-      document.getElementById("noResult").classList.add("hidden");
-      document.getElementById("behaviorResult").textContent = "";
-    }
-  </script>
+<script>
+function answerYes(){
+document.getElementById("firstButtons").classList.add("hidden");
+document.getElementById("secondQuestion").classList.remove("hidden");
+document.getElementById("noResult").classList.add("hidden");
+}
+function answerNo(){
+document.getElementById("firstButtons").classList.add("hidden");
+document.getElementById("secondQuestion").classList.add("hidden");
+document.getElementById("noResult").classList.remove("hidden");
+}
+function answerBehavior(answer){
+document.getElementById("behaviorResult").textContent=
+answer==="GOOD"?"😎 You know Eyob! Good choice!":"😂 Really? Eyob will remember that!";
+}
+function resetQuiz(){
+document.getElementById("firstButtons").classList.remove("hidden");
+document.getElementById("secondQuestion").classList.add("hidden");
+document.getElementById("noResult").classList.add("hidden");
+document.getElementById("behaviorResult").textContent="";
+}
+</script>
 </body>
 </html>
