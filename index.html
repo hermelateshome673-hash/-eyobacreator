@@ -8,338 +8,228 @@
 
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f3f4f6;
-      color: #172033;
-    }
-
-    /* Big welcome background */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 30px 20px;
+      background: #080808;
       color: white;
-      background:
-        radial-gradient(circle at top right, #2563eb, transparent 40%),
-        linear-gradient(135deg, #09090f, #172554, #312e81);
-    }
-
-    .hero .small {
-      color: #67e8f9;
-      letter-spacing: 5px;
-      font-size: 14px;
-    }
-
-    .hero h1 {
-      font-size: clamp(65px, 14vw, 125px);
-      margin: 15px 0;
-      letter-spacing: -4px;
-      text-shadow: 0 0 35px #6366f1;
-    }
-
-    .hero p {
-      color: #dbeafe;
-      font-size: 20px;
-    }
-
-    .scroll-link {
-      margin-top: 45px;
-      color: white;
-      text-decoration: none;
-      border: 1px solid #818cf8;
-      border-radius: 30px;
-      padding: 14px 24px;
     }
 
     section {
-      max-width: 850px;
-      margin: auto;
-      padding: 75px 22px;
+      min-height: 100vh;
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at center, #292929 0%, #080808 65%);
+    }
+
+    .small-title {
+      color: #b4b4b4;
+      letter-spacing: 5px;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(50px, 12vw, 110px);
+      font-weight: 900;
+      letter-spacing: -4px;
+    }
+
+    .accent {
+      color: #b8ff00;
+    }
+
+    .subtitle {
+      margin-top: 20px;
+      color: #ccc;
+      font-size: 18px;
+    }
+
+    .scroll {
+      margin-top: 60px;
+      color: #b8ff00;
+      font-size: 13px;
+      letter-spacing: 3px;
     }
 
     .about {
-      text-align: center;
+      background: #111;
     }
 
-    .about h2, .question h2 {
-      font-size: 30px;
+    h2 {
+      font-size: clamp(32px, 6vw, 58px);
+      margin-bottom: 25px;
     }
 
-    .about p {
-      color: #4b5563;
-      font-size: 18px;
+    .description {
+      color: #bbb;
+      max-width: 600px;
       line-height: 1.8;
+      font-size: 17px;
+      margin-bottom: 35px;
     }
 
-    .question {
-      background: white;
-      border-radius: 24px;
-      padding: 30px;
-      margin: 30px 0;
-      box-shadow: 0 12px 35px #0f172a12;
-      text-align: center;
+    .question-card {
+      width: min(100%, 650px);
+      padding: 35px 25px;
+      background: #191919;
+      border: 1px solid #333;
+      border-radius: 20px;
+      margin-top: 20px;
     }
 
     .number {
-      color: #6366f1;
-      font-size: 12px;
+      color: #b8ff00;
       letter-spacing: 3px;
-      font-weight: bold;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .question {
+      font-size: clamp(23px, 4vw, 34px);
+      margin-bottom: 28px;
     }
 
     .buttons {
       display: flex;
-      gap: 14px;
-      margin-top: 25px;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     button {
-      flex: 1;
-      border: none;
-      border-radius: 12px;
-      padding: 16px 12px;
-      font-size: 17px;
+      border: 1px solid #b8ff00;
+      background: transparent;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      transition: transform 0.2s, opacity 0.2s;
+      transition: 0.25s;
     }
 
     button:hover {
+      background: #b8ff00;
+      color: #080808;
       transform: translateY(-3px);
-      opacity: 0.9;
-    }
-
-    .yes, .good {
-      background: #16a34a;
-      color: white;
-    }
-
-    .no, .bad {
-      background: #dc2626;
-      color: white;
     }
 
     .result {
-      display: none;
       margin-top: 25px;
-      padding: 22px;
-      border-radius: 16px;
-      background: #eef2ff;
       line-height: 1.7;
+      font-size: 18px;
+    }
+
+    .hidden {
+      display: none;
     }
 
     .angry {
-      background: #450a0a;
-      color: white;
-      padding: 35px 20px;
-      border-radius: 18px;
-    }
-
-    .angry .emoji {
       font-size: 75px;
-    }
-
-    .angry h2 {
-      color: #fca5a5;
-    }
-
-    .reset {
-      background: #334155;
-      color: white;
-      width: 100%;
-      margin-top: 20px;
+      margin-bottom: 15px;
     }
 
     footer {
+      padding: 25px;
+      background: #080808;
+      color: #777;
       text-align: center;
-      padding: 30px 15px;
-      background: #09090f;
-      color: #cbd5e1;
-    }
-
-    @media (max-width: 480px) {
-      .question {
-        padding: 23px 17px;
-      }
-
-      .question h2 {
-        font-size: 24px;
-      }
-
-      .buttons {
-        gap: 9px;
-      }
     }
   </style>
 </head>
 
 <body>
+  <section class="hero">
+    <p class="small-title">WELCOME TO MY WORLD</p>
+    <h1><span class="accent">@</span>Eyoba</h1>
+    <p class="subtitle">My world. My story. My rules.</p>
+    <p class="scroll">↓ SCROLL TO EXPLORE ↓</p>
+  </section>
 
-  <!-- Welcome background -->
-  <header class="hero">
-    <div class="small">WELCOME TO MY WORLD</div>
-    <h1>@Eyoba</h1>
-    <p>My world. My story. My rules.</p>
-    <a class="scroll-link" href="#about">
-      Discover More ↓
-    </a>
-  </header>
-
-  <!-- About me -->
-  <section id="about" class="about">
-    <div class="number">A LITTLE ABOUT ME</div>
-    <h2>Welcome to @Eyoba 👋</h2>
-    <p>
-      This is my personal space on the internet.
-      Here you can answer questions, share your opinion,
-      and discover more about Eyob Yeshitla.
+  <section class="about">
+    <p class="small-title">GET TO KNOW ME</p>
+    <h2>About <span class="accent">Me</span></h2>
+    <p class="description">
+      Welcome to my personal website! This is my space to share my
+      personality, my story, and a little fun. Let's see how well you
+      know Eyob!
     </p>
-    <p>Ready? Let's see what you know! 😎</p>
-  </section>
 
-  <!-- First question -->
-  <section id="quiz">
-    <div class="question" id="question1">
-      <div class="number">QUESTION 01</div>
-      <h2>Do you know Eyob Yeshitla? 🤔</h2>
+    <div class="question-card">
+      <p class="number">QUESTION 01</p>
+      <h3 class="question">Do you know Eyob Yeshitla?</h3>
 
-      <div class="buttons">
-        <button class="yes" onclick="chooseYes()">
-          YES 👍
-        </button>
-        <button class="no" onclick="chooseNo()">
-          NO 👎
-        </button>
+      <div class="buttons" id="firstButtons">
+        <button onclick="answerYes()">YES</button>
+        <button onclick="answerNo()">NO</button>
       </div>
 
-      <div class="result" id="answer1"></div>
-    </div>
-
-    <!-- Second question: appears after YES -->
-    <div class="question" id="question2" style="display:none">
-      <div class="number">QUESTION 02</div>
-      <h2>What is his behavior? 😎</h2>
-
-      <div class="buttons">
-        <button class="good" onclick="chooseBehavior('good')">
-          GOOD 😊
-        </button>
-        <button class="bad" onclick="chooseBehavior('bad')">
-          BAD 😈
-        </button>
-      </div>
-
-      <div class="result" id="answer2"></div>
-    </div>
-
-    <!-- NO reaction -->
-    <div class="question" id="getOut" style="display:none">
-      <div class="angry">
-        <div class="emoji">😡</div>
-        <h2>HEY, YOU! 😂</h2>
+      <div id="noResult" class="result hidden">
+        <div class="angry">😡</div>
         <h2>GET OUT OF THIS WEBSITE!</h2>
-        <p>
-          You don't know Eyob Yeshitla?
-          What are you doing here? 😂
-        </p>
-        <p>Just kidding! You can try again.</p>
+        <p>You don't know Eyob? How did you get in here? 😂</p>
+        <button onclick="resetQuiz()">TRY AGAIN</button>
       </div>
 
-      <button class="reset" onclick="restartQuiz()">
-        ↻ Try Again
-      </button>
-    </div>
+      <div id="secondQuestion" class="hidden">
+        <p class="number" style="margin-top: 35px;">QUESTION 02</p>
+        <h3 class="question">What is his behavior?</h3>
 
-    <div id="restartArea" style="display:none">
-      <button class="reset" onclick="restartQuiz()">
-        ↻ Start Again
-      </button>
+        <div class="buttons">
+          <button onclick="answerBehavior('GOOD')">GOOD</button>
+          <button onclick="answerBehavior('BAD')">BAD</button>
+        </div>
+
+        <p id="behaviorResult" class="result"></p>
+      </div>
     </div>
   </section>
 
-  <footer>
-    © 2026 @Eyoba — Made with ❤️
-  </footer>
+  <footer>© 2026 @Eyoba — My World, My Rules.</footer>
 
   <script>
-    function chooseYes() {
-      document.getElementById("answer1").style.display = "block";
-      document.getElementById("answer1").innerHTML =
-        "Ohhh! 😎 Let's find out what you think about him!";
-
-      document.getElementById("question2").style.display = "block";
-      document.getElementById("getOut").style.display = "none";
-      document.getElementById("restartArea").style.display = "none";
-
-      setTimeout(() => {
-        document.getElementById("question2").scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }, 150);
+    function answerYes() {
+      document.getElementById("firstButtons").classList.add("hidden");
+      document.getElementById("secondQuestion").classList.remove("hidden");
+      document.getElementById("noResult").classList.add("hidden");
     }
 
-    function chooseNo() {
-      document.getElementById("question2").style.display = "none";
-      document.getElementById("answer1").style.display = "none";
-      document.getElementById("getOut").style.display = "block";
-      document.getElementById("restartArea").style.display = "none";
-
-      setTimeout(() => {
-        document.getElementById("getOut").scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }, 100);
+    function answerNo() {
+      document.getElementById("firstButtons").classList.add("hidden");
+      document.getElementById("secondQuestion").classList.add("hidden");
+      document.getElementById("noResult").classList.remove("hidden");
     }
 
-    function chooseBehavior(choice) {
-      const answer = document.getElementById("answer2");
-      answer.style.display = "block";
+    function answerBehavior(answer) {
+      const result = document.getElementById("behaviorResult");
 
-      if (choice === "good") {
-        answer.innerHTML =
-          "😊 NICE! You think Eyob has good behavior! " +
-          "You know him well! 💚";
+      if (answer === "GOOD") {
+        result.textContent = "😎 You know Eyob! Good choice!";
       } else {
-        answer.innerHTML =
-          "😈 OHHH! You think his behavior is bad? " +
-          "That's your opinion! 😂🔥";
+        result.textContent = "😂 Really? Eyob will remember that!";
       }
-
-      document.getElementById("restartArea").style.display = "block";
-
-      setTimeout(() => {
-        answer.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }, 100);
     }
 
-    function restartQuiz() {
-      document.getElementById("answer1").style.display = "none";
-      document.getElementById("answer2").style.display = "none";
-      document.getElementById("question2").style.display = "none";
-      document.getElementById("getOut").style.display = "none";
-      document.getElementById("restartArea").style.display = "none";
-
-      document.getElementById("question1").scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
+    function resetQuiz() {
+      document.getElementById("firstButtons").classList.remove("hidden");
+      document.getElementById("secondQuestion").classList.add("hidden");
+      document.getElementById("noResult").classList.add("hidden");
+      document.getElementById("behaviorResult").textContent = "";
     }
   </script>
-
 </body>
 </html>
