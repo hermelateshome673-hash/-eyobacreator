@@ -1,44 +1,345 @@
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eyoba Creator</title>
+  <title>@Eyoba | My World</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #101827, #164e63);
+      background: #f3f4f6;
+      color: #172033;
+    }
+
+    /* Big welcome background */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px 20px;
       color: white;
+      background:
+        radial-gradient(circle at top right, #2563eb, transparent 40%),
+        linear-gradient(135deg, #09090f, #172554, #312e81);
+    }
+
+    .hero .small {
+      color: #67e8f9;
+      letter-spacing: 5px;
+      font-size: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(65px, 14vw, 125px);
+      margin: 15px 0;
+      letter-spacing: -4px;
+      text-shadow: 0 0 35px #6366f1;
+    }
+
+    .hero p {
+      color: #dbeafe;
+      font-size: 20px;
+    }
+
+    .scroll-link {
+      margin-top: 45px;
+      color: white;
+      text-decoration: none;
+      border: 1px solid #818cf8;
+      border-radius: 30px;
+      padding: 14px 24px;
+    }
+
+    section {
+      max-width: 850px;
+      margin: auto;
+      padding: 75px 22px;
+    }
+
+    .about {
       text-align: center;
     }
-    header { padding: 25px; }
-    main { padding: 70px 20px; }
-    h1 { font-size: 42px; }
-    p { font-size: 18px; line-height: 1.7; }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 25px;
-      background: #22c55e;
-      color: #07150b;
-      text-decoration: none;
-      border-radius: 10px;
+
+    .about h2, .question h2 {
+      font-size: 30px;
+    }
+
+    .about p {
+      color: #4b5563;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .question {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 12px 35px #0f172a12;
+      text-align: center;
+    }
+
+    .number {
+      color: #6366f1;
+      font-size: 12px;
+      letter-spacing: 3px;
       font-weight: bold;
     }
-    footer { padding: 25px; color: #cbd5e1; }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    button {
+      flex: 1;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 12px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      opacity: 0.9;
+    }
+
+    .yes, .good {
+      background: #16a34a;
+      color: white;
+    }
+
+    .no, .bad {
+      background: #dc2626;
+      color: white;
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      padding: 22px;
+      border-radius: 16px;
+      background: #eef2ff;
+      line-height: 1.7;
+    }
+
+    .angry {
+      background: #450a0a;
+      color: white;
+      padding: 35px 20px;
+      border-radius: 18px;
+    }
+
+    .angry .emoji {
+      font-size: 75px;
+    }
+
+    .angry h2 {
+      color: #fca5a5;
+    }
+
+    .reset {
+      background: #334155;
+      color: white;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      background: #09090f;
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 480px) {
+      .question {
+        padding: 23px 17px;
+      }
+
+      .question h2 {
+        font-size: 24px;
+      }
+
+      .buttons {
+        gap: 9px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <header><strong>EYОBA CREATOR</strong></header>
-  <main>
-    <h1>Welcome to My Website</h1>
-    <p>Creativity starts here.</p>
-    <p>Explore my ideas, projects, and work.<br>
-       Thanks for visiting my website!</p>
-    <a href="https://github.com/">Explore GitHub</a>
-  </main>
-  <footer>© 2026 Eyoba Creator</footer>
+
+  <!-- Welcome background -->
+  <header class="hero">
+    <div class="small">WELCOME TO MY WORLD</div>
+    <h1>@Eyoba</h1>
+    <p>My world. My story. My rules.</p>
+    <a class="scroll-link" href="#about">
+      Discover More ↓
+    </a>
+  </header>
+
+  <!-- About me -->
+  <section id="about" class="about">
+    <div class="number">A LITTLE ABOUT ME</div>
+    <h2>Welcome to @Eyoba 👋</h2>
+    <p>
+      This is my personal space on the internet.
+      Here you can answer questions, share your opinion,
+      and discover more about Eyob Yeshitla.
+    </p>
+    <p>Ready? Let's see what you know! 😎</p>
+  </section>
+
+  <!-- First question -->
+  <section id="quiz">
+    <div class="question" id="question1">
+      <div class="number">QUESTION 01</div>
+      <h2>Do you know Eyob Yeshitla? 🤔</h2>
+
+      <div class="buttons">
+        <button class="yes" onclick="chooseYes()">
+          YES 👍
+        </button>
+        <button class="no" onclick="chooseNo()">
+          NO 👎
+        </button>
+      </div>
+
+      <div class="result" id="answer1"></div>
+    </div>
+
+    <!-- Second question: appears after YES -->
+    <div class="question" id="question2" style="display:none">
+      <div class="number">QUESTION 02</div>
+      <h2>What is his behavior? 😎</h2>
+
+      <div class="buttons">
+        <button class="good" onclick="chooseBehavior('good')">
+          GOOD 😊
+        </button>
+        <button class="bad" onclick="chooseBehavior('bad')">
+          BAD 😈
+        </button>
+      </div>
+
+      <div class="result" id="answer2"></div>
+    </div>
+
+    <!-- NO reaction -->
+    <div class="question" id="getOut" style="display:none">
+      <div class="angry">
+        <div class="emoji">😡</div>
+        <h2>HEY, YOU! 😂</h2>
+        <h2>GET OUT OF THIS WEBSITE!</h2>
+        <p>
+          You don't know Eyob Yeshitla?
+          What are you doing here? 😂
+        </p>
+        <p>Just kidding! You can try again.</p>
+      </div>
+
+      <button class="reset" onclick="restartQuiz()">
+        ↻ Try Again
+      </button>
+    </div>
+
+    <div id="restartArea" style="display:none">
+      <button class="reset" onclick="restartQuiz()">
+        ↻ Start Again
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 @Eyoba — Made with ❤️
+  </footer>
+
+  <script>
+    function chooseYes() {
+      document.getElementById("answer1").style.display = "block";
+      document.getElementById("answer1").innerHTML =
+        "Ohhh! 😎 Let's find out what you think about him!";
+
+      document.getElementById("question2").style.display = "block";
+      document.getElementById("getOut").style.display = "none";
+      document.getElementById("restartArea").style.display = "none";
+
+      setTimeout(() => {
+        document.getElementById("question2").scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }, 150);
+    }
+
+    function chooseNo() {
+      document.getElementById("question2").style.display = "none";
+      document.getElementById("answer1").style.display = "none";
+      document.getElementById("getOut").style.display = "block";
+      document.getElementById("restartArea").style.display = "none";
+
+      setTimeout(() => {
+        document.getElementById("getOut").scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }, 100);
+    }
+
+    function chooseBehavior(choice) {
+      const answer = document.getElementById("answer2");
+      answer.style.display = "block";
+
+      if (choice === "good") {
+        answer.innerHTML =
+          "😊 NICE! You think Eyob has good behavior! " +
+          "You know him well! 💚";
+      } else {
+        answer.innerHTML =
+          "😈 OHHH! You think his behavior is bad? " +
+          "That's your opinion! 😂🔥";
+      }
+
+      document.getElementById("restartArea").style.display = "block";
+
+      setTimeout(() => {
+        answer.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }, 100);
+    }
+
+    function restartQuiz() {
+      document.getElementById("answer1").style.display = "none";
+      document.getElementById("answer2").style.display = "none";
+      document.getElementById("question2").style.display = "none";
+      document.getElementById("getOut").style.display = "none";
+      document.getElementById("restartArea").style.display = "none";
+
+      document.getElementById("question1").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+  </script>
+
 </body>
 </html>
