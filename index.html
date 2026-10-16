@@ -7,53 +7,60 @@
 <title>Eyoba Universe 💙</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:linear-gradient(135deg,#10152e,#182b59,#392365);color:white;font-family:Arial,sans-serif}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at top,#344b91,#171b43 52%,#0c1025);color:white;font-family:Arial,sans-serif}
 header{text-align:center;padding:28px 12px;background:linear-gradient(120deg,#087bdf,#7c3aed,#ed4899)}
-header h1{font-size:clamp(36px,7vw,60px);margin:0}
-nav{position:sticky;top:0;background:#10152ef2;padding:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;z-index:5}
-nav a{color:#bcecff;text-decoration:none;background:#26345f;padding:10px;border-radius:18px}
-main{max-width:1050px;margin:auto;padding:15px}
-section{margin:22px 0;padding:22px;border:1px solid #527cdb;border-radius:22px;background:linear-gradient(145deg,#1b2853,#211b49);scroll-margin-top:75px}
+header h1{font-size:clamp(34px,7vw,62px);margin:0}
+nav{position:sticky;top:0;z-index:10;background:#0c1025ed;padding:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+nav a{color:#c6f3ff;text-decoration:none;background:#26345f;padding:9px 13px;border-radius:20px}
+main{max-width:1100px;margin:auto;padding:15px}
+section{margin:22px 0;padding:22px;border:1px solid #527cdb;border-radius:22px;background:linear-gradient(145deg,#1b2853f5,#211b49f5);box-shadow:0 12px 30px #0003;scroll-margin-top:70px}
 h2{color:#8ee9ff}
-button{background:linear-gradient(120deg,#21c8ff,#8b5cf6);color:white;border:0;border-radius:12px;padding:12px;font-weight:bold;cursor:pointer;margin:3px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+button{border:0;border-radius:12px;padding:11px 14px;font-weight:bold;cursor:pointer;background:linear-gradient(120deg,#21c8ff,#8b5cf6);color:white;margin:3px}
+button:disabled{opacity:.55;cursor:default}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .card,.question,.stat{padding:15px;border:1px solid #3b5caa;border-radius:15px;background:#111b3b}
-.stat strong{display:block;font-size:25px;color:#8ee9ff}
+.stat strong{display:block;font-size:24px;color:#8ee9ff}
 .hero{text-align:center}
-.hyena{font-size:90px;display:block}
+.hyena{font-size:80px;display:block}
 .answers{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .answers button{background:#27345e}
 .correct{background:#167d54!important}
 .wrong{background:#a72d4d!important}
-.bigemoji{font-size:45px;text-align:center}
-.feedback{color:#fff0a8;min-height:25px;font-weight:bold}
-#arena{height:390px;border:3px solid #48d9ff;border-radius:15px;overflow:hidden;background:#080d20}
+.bigemoji{font-size:40px;text-align:center}
+.feedback{color:#fff0a8;min-height:24px;font-weight:bold}
+#arena{height:450px;border:3px solid #48d9ff;border-radius:16px;overflow:hidden;background:#070b19}
 #arena canvas{display:block;width:100%;height:100%}
-.controls{text-align:center;margin-top:12px}
+.controls{text-align:center;margin:9px 0}
+.hint{color:#c5d3f7;font-size:14px}
 #gift{text-align:center;background:linear-gradient(135deg,#5d247c,#263da4,#b82f87)}
-#giftbox{font-size:95px;cursor:pointer}
+#giftbox{font-size:90px;cursor:pointer}
 #giftResult{display:none;background:white;color:#392365;padding:18px;border-radius:18px}
-footer{text-align:center;padding:25px;color:#aebfe9}
-@media(max-width:600px){section{padding:14px}#arena{height:320px}}
+footer{text-align:center;padding:28px;color:#aebfe9}
+@media(max-width:600px){section{padding:14px}#arena{height:350px}}
 </style>
 </head>
 <body>
 <header>
 <h1>🌌 Eyoba Universe 💙</h1>
 <p>Dream • Study • Create • Explore</p>
-<p>Debrebrhan University — Mehal Meda Campus</p>
+<p>Debrebrhan University · Mehal Meda Campus</p>
 </header>
 <nav>
-<a href="#home">🏠 Home</a><a href="#quiz">🧠 Quiz</a><a href="#game">🥷 3D Game</a><a href="#about">💙 About</a><a href="#gift">🎁 Gift</a>
+<a href="#home">🏠 Home</a>
+<a href="#quiz">🧠 Quiz</a>
+<a href="#game">🎮 Game</a>
+<a href="#about">💙 About</a>
+<a href="#gift">🎁 Gift</a>
 </nav>
 <main>
 <section id="home" class="hero">
 <span class="hyena">🐺</span>
-<h2>Hey! Welcome to Eyoba's Universe! 😎</h2>
-<p>Campus jokes, crazy quizzes, karate battles, and surprises!</p>
-<p>Dorm 304 • BAIS • iPhone • Blue 💙</p>
+<h2>Welcome to Eyoba's Universe! 😎</h2>
+<p>Campus jokes, quizzes, action levels, and friendship surprises.</p>
+<p>Dorm 304 · BAIS · iPhone · Blue 💙</p>
 <div class="grid">
-<div class="stat">⭐ Level<strong id="level">1</strong></div>
+<div class="stat">⭐ Level<strong id="profileLevel">1</strong></div>
 <div class="stat">💎 XP<strong id="xp">0</strong></div>
 <div class="stat">🪙 Coins<strong id="coins">0</strong></div>
 </div>
@@ -63,34 +70,38 @@ footer{text-align:center;padding:25px;color:#aebfe9}
 
 <section id="quiz">
 <h2>🧠 How Well Do You Know Eyoba?</h2>
-<p>Correct answers bring a happy emoji. Wrong answers bring an angry face! 😂</p>
+<p>Choose an answer. Correct answers earn XP and coins!</p>
 <div id="quizList"></div>
 <p id="quizStatus" class="feedback">Ready? Let's go!</p>
 <button onclick="resetQuiz()">🔄 Try Again</button>
 </section>
 
 <section id="game">
-<h2>🥷 Eyoba 3D: Campus Warrior</h2>
-<p>Defend Mehal Meda Campus from robot enemies! Use lasers from a distance and karate when robots get close.</p>
+<h2>🎮 Eyoba: 10-Level Human Combat Challenge</h2>
+<p>Play as a human fighter. Defeat enemy fighters using your energy blaster and karate. Each level gets harder!</p>
 <div class="grid">
+<div class="stat">🏆 Level<strong id="gameLevel">1 / 10</strong></div>
 <div class="stat">❤️ Health<strong id="health">100</strong></div>
-<div class="stat">🤖 Enemies<strong id="enemyCount">5</strong></div>
-<div class="stat">🏆 Score<strong id="score">0</strong></div>
+<div class="stat">👨 Enemies left<strong id="enemyCount">0</strong></div>
+<div class="stat">🎯 Score<strong id="score">0</strong></div>
 </div>
-<div id="arena"><div id="loading" style="padding:30px;text-align:center">Loading 3D campus arena... 🌌</div></div>
-<p id="gameMessage" class="feedback">Press Start to enter the battle!</p>
-<p>Keyboard: WASD or arrow keys to move, Space to shoot, K to karate.</p>
+<div id="arena"><div style="padding:35px;text-align:center">Loading 3D arena…</div></div>
+<p id="gameMessage" class="feedback">Press Start Level to begin.</p>
+<p class="hint"><b>Computer:</b> WASD or arrow keys to move, Space to shoot, K to karate, Shift to sprint.</p>
+<p class="hint"><b>Phone:</b> Use the touch buttons below. Internet is required to load the 3D game engine.</p>
 <div class="controls">
 <button onclick="startGame()">🚀 Start / Restart</button>
-<button onclick="shoot()">🔵 Laser Shoot</button>
-<button onclick="karate()">🥋 Karate Kick</button>
+<button onclick="shoot()">🔵 Shoot</button>
+<button onclick="karate()">🥋 Karate</button>
+<button onclick="sprintToggle()">⚡ Sprint</button>
 </div>
 <div class="controls">
-<button onpointerdown="move='forward'" onpointerup="move=''" onpointerleave="move=''">⬆️ Forward</button>
-<button onpointerdown="move='left'" onpointerup="move=''" onpointerleave="move=''">⬅️ Left</button>
-<button onpointerdown="move='back'" onpointerup="move=''" onpointerleave="move=''">⬇️ Back</button>
-<button onpointerdown="move='right'" onpointerup="move=''" onpointerleave="move=''">➡️ Right</button>
+<button onpointerdown="setMove('forward')" onpointerup="stopMove()" onpointerleave="stopMove()" onpointercancel="stopMove()">⬆️ Forward</button>
+<button onpointerdown="setMove('left')" onpointerup="stopMove()" onpointerleave="stopMove()" onpointercancel="stopMove()">⬅️ Left</button>
+<button onpointerdown="setMove('back')" onpointerup="stopMove()" onpointerleave="stopMove()" onpointercancel="stopMove()">⬇️ Back</button>
+<button onpointerdown="setMove('right')" onpointerup="stopMove()" onpointerleave="stopMove()" onpointercancel="stopMove()">➡️ Right</button>
 </div>
+<p class="hint">Defeat all enemies to advance. Clear Level 10 to win!</p>
 </section>
 
 <section id="about">
@@ -99,19 +110,24 @@ footer{text-align:center;padding:25px;color:#aebfe9}
 <div class="card">🏠 <b>Dorm</b><p>Room 304</p></div>
 <div class="card">🎓 <b>Field</b><p>BAIS</p></div>
 <div class="card">📱 <b>Phone</b><p>iPhone</p></div>
-<div class="card">🎨 <b>Favorite Color</b><p>Blue</p></div>
+<div class="card">🎨 <b>Favorite color</b><p>Blue 💙</p></div>
 <div class="card">🧠 <b>Personality</b><p>Kind and smart</p></div>
 <div class="card">✏️ <b>Hobby</b><p>Drawing</p></div>
 </div>
 <h2>🌟 Five Extra Fun Questions</h2>
+<p class="hint">These are just playful questions!</p>
 <div class="grid">
-<div class="card">1. Best free-day plan?<p><button onclick="extra(this,'Correct! Relax time! 😎')">Relax 😴</button><button onclick="extra(this,'Wrong! Homework monster! 📚')">Homework 📚</button></p><p class="feedback"></p></div>
-<div class="card">2. Funny superpower?<p><button onclick="extra(this,'Correct! Flying notebooks! 😂')">Control wind 🌬️</button><button onclick="extra(this,'Wrong! Potato power? 🥔')">Become a potato</button></p><p class="feedback"></p></div>
-<div class="card">3. Study snack?<p><button onclick="extra(this,'Correct! Pizza champion! 🍕')">Pizza 🍕</button><button onclick="extra(this,'Wrong! Don’t eat your notebook! 😂')">Notebook 📒</button></p><p class="feedback"></p></div>
-<div class="card">4. Campus wind attack?<p><button onclick="extra(this,'Correct! Save the papers! 🏃')">Chase papers 🏃</button><button onclick="extra(this,'Wrong! The wind wins! 🤣')">Argue with wind</button></p><p class="feedback"></p></div>
-<div class="card">5. What makes a good friend?<p><button onclick="extra(this,'Correct! Friendship unlocked! 💙')">Good vibes 💙</button><button onclick="extra(this,'Wrong! Exam monster incoming! 📝')">More exams</button></p><p class="feedback"></p></div>
+<div class="card">1. Best free-day plan?
+<p><button onclick="extra(this,'Correct! Relax time! 😎')">Relax 😴</button><button onclick="extra(this,'Wrong! Homework monster! 📚')">Homework 📚</button></p><p class="feedback"></p></div>
+<div class="card">2. Funny superpower?
+<p><button onclick="extra(this,'Correct! Control the wind! 😂')">Control wind 🌬️</button><button onclick="extra(this,'Wrong! Potato power? 🥔')">Become potato</button></p><p class="feedback"></p></div>
+<div class="card">3. Best study snack?
+<p><button onclick="extra(this,'Correct! Pizza champion! 🍕')">Pizza 🍕</button><button onclick="extra(this,'Wrong! Do not eat your notebook! 😂')">Notebook 📒</button></p><p class="feedback"></p></div>
+<div class="card">4. Campus wind attack?
+<p><button onclick="extra(this,'Correct! Save the papers! 🏃')">Chase papers 🏃</button><button onclick="extra(this,'Wrong! The wind wins! 🤣')">Argue with wind</button></p><p class="feedback"></p></div>
+<div class="card">5. What makes a good friend?
+<p><button onclick="extra(this,'Correct! Friendship unlocked! 💙')">Good vibes 💙</button><button onclick="extra(this,'Wrong! Exam monster incoming! 📝')">More exams</button></p><p class="feedback"></p></div>
 </div>
-<p class="feedback">These five questions are just for fun, not confirmed facts about Eyoba.</p>
 </section>
 
 <section id="gift">
@@ -120,11 +136,10 @@ footer{text-align:center;padding:25px;color:#aebfe9}
 <div id="giftbox" onclick="openGift()">🎁</div>
 <button onclick="openGift()">OPEN MY GIFT! 💌</button>
 <div id="giftResult">
-<div style="font-size:65px">🎉💙🎉</div>
+<div style="font-size:60px">🎉💙🎉</div>
 <h2 style="color:#532b92">CONGRATULATIONS!</h2>
 <h3>Eyoba accepted your friend request! 🤝</h3>
 <p>Welcome to the Eyoba Universe family!</p>
-<p>🏆 You are a Friendship Explorer!</p>
 <p>This is a playful website surprise, not a real social-media request.</p>
 </div>
 </section>
@@ -146,155 +161,313 @@ const questions=[
 ["What is the Eyoba Universe motto?",["Dream, study, create, explore","Sleep in every class","Fight notebooks","Run from snacks"],0]
 ];
 let xp=0,coins=0,answered=new Set();
-function stats(){document.getElementById('xp').textContent=xp;document.getElementById('coins').textContent=coins;document.getElementById('level').textContent=1+Math.floor(xp/50)}
+function stats(){
+ document.getElementById('xp').textContent=xp;
+ document.getElementById('coins').textContent=coins;
+ document.getElementById('profileLevel').textContent=1+Math.floor(xp/50);
+}
 function renderQuiz(){
- const list=document.getElementById('quizList');list.innerHTML='';
+ const list=document.getElementById('quizList');
+ list.innerHTML='';
  questions.forEach((q,i)=>{
-  const box=document.createElement('div');box.className='question';
-  box.innerHTML='<b>'+(i+1)+'. '+q[0]+'</b><div class="answers"></div><div class="bigemoji" id="em'+i+'"></div><div class="feedback" id="fb'+i+'"></div>';
+  const box=document.createElement('div');
+  box.className='question';
+  const title=document.createElement('b');
+  title.textContent=(i+1)+'. '+q[0];
+  box.appendChild(title);
+  const answers=document.createElement('div');
+  answers.className='answers';
   q[1].forEach((a,j)=>{
-   const b=document.createElement('button');b.textContent=String.fromCharCode(65+j)+'. '+a;
-   b.onclick=()=>answer(i,j,b);box.querySelector('.answers').appendChild(b);
+   const b=document.createElement('button');
+   b.textContent=String.fromCharCode(65+j)+'. '+a;
+   b.onclick=()=>answer(i,j,b);
+   answers.appendChild(b);
   });
+  box.appendChild(answers);
+  const emoji=document.createElement('div');
+  emoji.className='bigemoji';
+  emoji.id='em'+i;
+  box.appendChild(emoji);
+  const feedback=document.createElement('div');
+  feedback.className='feedback';
+  feedback.id='fb'+i;
+  box.appendChild(feedback);
   list.appendChild(box);
  });
 }
 function answer(i,j,b){
- if(answered.has(i))return;answered.add(i);
+ if(answered.has(i))return;
+ answered.add(i);
  const good=j===questions[i][2]||(i===4&&j===2);
  b.parentElement.querySelectorAll('button').forEach(x=>x.disabled=true);
- if(good){b.classList.add('correct');document.getElementById('em'+i).textContent='🤩🎉💙';document.getElementById('fb'+i).textContent='Correct! +10 XP and +5 coins!';xp+=10;coins+=5}
- else{b.classList.add('wrong');document.getElementById('em'+i).textContent='😡💢';document.getElementById('fb'+i).textContent='Wrong! Eyoba is angry! 😂 Correct answer: '+questions[i][1][questions[i][2]]}
- stats();document.getElementById('quizStatus').textContent='Answered '+answered.size+' of '+questions.length+' questions!';
+ if(good){
+  b.classList.add('correct');
+  document.getElementById('em'+i).textContent='🤩🎉💙';
+  document.getElementById('fb'+i).textContent='Correct! +10 XP and +5 coins!';
+  xp+=10;coins+=5;
+ }else{
+  b.classList.add('wrong');
+  document.getElementById('em'+i).textContent='😡💢';
+  document.getElementById('fb'+i).textContent='Wrong! Eyoba is angry! 😂 Correct answer: '+questions[i][1][questions[i][2]];
+ }
+ stats();
+ document.getElementById('quizStatus').textContent='Answered '+answered.size+' of '+questions.length+' questions!';
 }
-function resetQuiz(){answered.clear();renderQuiz();document.getElementById('quizStatus').textContent='Fresh start! Good luck! 🚀'}
-function joke(){const j=["Mehal Meda wind is so strong, even Wi-Fi needs a jacket! 🌬️😂","Eyoba’s notebook flew away. Now the wind is studying BAIS! 📒🤣","Eyoba ran so fast his backpack called a taxi! 🎒😂","The wind is the campus champion of stealing homework! 🌪️"];document.getElementById('jokeText').textContent=j[Math.floor(Math.random()*j.length)]}
-function extra(b,msg){const p=b.closest('.card');p.querySelectorAll('button').forEach(x=>x.disabled=true);p.querySelector('.feedback').textContent=msg}
+function resetQuiz(){
+ answered.clear();renderQuiz();
+ document.getElementById('quizStatus').textContent='Fresh start! Good luck! 🚀';
+}
+function joke(){
+ const jokes=[
+  "Mehal Meda wind is so strong, even Wi-Fi needs a jacket! 🌬️😂",
+  "Eyoba’s notebook flew away. Now the wind is studying BAIS! 📒🤣",
+  "The wind is the campus champion of stealing homework! 🌪️"
+ ];
+ document.getElementById('jokeText').textContent=jokes[Math.floor(Math.random()*jokes.length)];
+}
+function extra(b,msg){
+ const p=b.closest('.card');
+ p.querySelectorAll('button').forEach(x=>x.disabled=true);
+ p.querySelector('.feedback').textContent=msg;
+}
 let gifted=false;
-function openGift(){document.getElementById('giftResult').style.display='block';document.getElementById('giftbox').textContent='🎉';if(!gifted){gifted=true;xp+=25;coins+=20;stats()}}
+function openGift(){
+ document.getElementById('giftResult').style.display='block';
+ document.getElementById('giftbox').textContent='🎉';
+ if(!gifted){gifted=true;xp+=25;coins+=20;stats();}
+}
 renderQuiz();
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-let scene,camera,renderer,hero,robots=[],shots=[],running=false,health=100,score=0,move='',lastShot=0,lastKick=0;
+let scene,camera,renderer,hero,robots=[],shots=[],running=false,level=1,health=100,score=0,move='',sprinting=false,lastShot=0,lastKick=0,lastHit=0;
 const arena=document.getElementById('arena');
 const say=t=>document.getElementById('gameMessage').textContent=t;
-function mat(c){return new THREE.MeshStandardMaterial({color:c,roughness:.65})}
-function block(parent,w,h,d,color,x,y,z){
- const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(color));o.position.set(x,y,z);parent.add(o);return o;
+
+function material(c){return new THREE.MeshStandardMaterial({color:c,roughness:.65});}
+function block(parent,w,h,d,c,x,y,z){
+ const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material(c));
+ m.position.set(x,y,z);parent.add(m);return m;
 }
-function makeHero(){
+function makeMan(x,z,enemy=false){
  const g=new THREE.Group();
- block(g,.8,1,.5,0x1679e8,0,.8,0);
- const h=new THREE.Group();
- block(h,.75,.65,.65,0xb97943,0,0,0);
- block(h,.2,.16,.1,0xffffff,-.17,.08,.34);block(h,.2,.16,.1,0xffffff,.17,.08,.34);
- block(h,.09,.09,.06,0x111111,-.17,.08,.4);block(h,.09,.09,.06,0x111111,.17,.08,.4);
- block(h,.18,.12,.1,0x251923,0,-.15,.36);
- block(h,.17,.3,.15,0x8a5133,-.26,.45,0);block(h,.17,.3,.15,0x8a5133,.26,.45,0);
- h.position.y=1.55;g.add(h);
- block(g,.25,.65,.3,0x253a5e,-.22,.05,0);block(g,.25,.65,.3,0x253a5e,.22,.05,0);
- block(g,.23,.7,.25,0x1679e8,-.5,.9,0);block(g,.23,.7,.25,0x1679e8,.5,.9,0);
- block(g,.18,.18,.7,0x31edff,.48,.9,.5);
- g.position.set(0,0,3);scene.add(g);return g;
+ const skin=enemy?0x9b6848:0xc58a60;
+ const shirt=enemy?0xb82948:0x1679e8;
+ const pants=enemy?0x343b56:0x243e75;
+ block(g,.75,.9,.42,shirt,0,1.05,0);
+ block(g,.52,.55,.52,skin,0,1.82,0);
+ block(g,.12,.1,.07,0xffffff,-.13,1.87,.27);
+ block(g,.12,.1,.07,0xffffff,.13,1.87,.27);
+ block(g,.055,.06,.04,0x111111,-.13,1.87,.31);
+ block(g,.055,.06,.04,0x111111,.13,1.87,.31);
+ block(g,.2,.07,.04,0x42251d,0,1.7,.28);
+ block(g,.55,.14,.55,enemy?0x171a25:0x32221a,0,2.13,0);
+ block(g,.22,.7,.25,shirt,-.52,1.08,0);
+ block(g,.22,.7,.25,shirt,.52,1.08,0);
+ block(g,.26,.75,.3,pants,-.2,.38,0);
+ block(g,.26,.75,.3,pants,.2,.38,0);
+ block(g,.24,.18,.38,0x20222b,-.2,.05,.06);
+ block(g,.24,.18,.38,0x20222b,.2,.05,.06);
+ g.position.set(x,0,z);
+ g.userData.enemy=enemy;
+ g.userData.hp=2+Math.floor(level/3);
+ g.userData.speed=.65+level*.17;
+ g.userData.attack=5+level*1.3;
+ scene.add(g);return g;
 }
-function makeRobot(x,z){
- const g=new THREE.Group();
- block(g,.9,1,.65,0xc12e58,0,.85,0);block(g,.8,.55,.6,0x677c9b,0,1.65,0);
- block(g,.17,.12,.08,0xffe64d,-.2,1.68,.32);block(g,.17,.12,.08,0xffe64d,.2,1.68,.32);
- block(g,.28,.25,.25,0x4d5c78,-.25,.25,0);block(g,.28,.25,.25,0x4d5c78,.25,.25,0);
- g.position.set(x,0,z);g.userData.hp=2;scene.add(g);robots.push(g);
-}
-function update(){
- document.getElementById('health').textContent=health;
+function updateUI(){
+ document.getElementById('health').textContent=Math.max(0,Math.ceil(health));
  document.getElementById('score').textContent=score;
  document.getElementById('enemyCount').textContent=robots.length;
+ document.getElementById('gameLevel').textContent=level+' / 10';
+}
+function spawnLevel(){
+ robots.forEach(r=>scene.remove(r));
+ shots.forEach(s=>scene.remove(s.mesh));
+ robots=[];shots=[];
+ const count=3+level*2;
+ for(let i=0;i<count;i++){
+  const angle=Math.PI*2*i/count,radius=8+Math.random()*5;
+  robots.push(makeMan(Math.cos(angle)*radius,-Math.sin(angle)*radius-2,true));
+ }
+ if(hero){hero.position.set(0,0,4);hero.rotation.y=0;}
+ health=Math.min(100,health+20);
+ running=true;updateUI();
+ say('LEVEL '+level+'! '+count+' enemy fighters incoming — they get faster every level!');
 }
 function startGame(){
- if(!renderer)return;
- robots.forEach(r=>scene.remove(r));shots.forEach(s=>scene.remove(s));
- robots=[];shots=[];health=100;score=0;running=true;move='';
- hero.position.set(0,0,3);
- for(let i=0;i<5;i++)makeRobot((i-2)*3,-4-i*2);
- update();say('MISSION START! Defend Mehal Meda Campus! 🥷');
+ if(!renderer){say('3D engine not loaded. Check internet and refresh the page.');return;}
+ level=1;score=0;health=100;spawnLevel();
+}
+function nextLevel(){
+ running=false;
+ if(level>=10){
+  say('🏆 YOU BEAT ALL 10 LEVELS! Eyoba is the ultimate champion! +500 bonus XP!');
+  xp+=500;coins+=100;stats();return;
+ }
+ level++;
+ say('LEVEL CLEARED! Loading level '+level+'…');
+ setTimeout(spawnLevel,1000);
 }
 function shoot(){
- if(!running){say('Press Start first, warrior!');return}
- if(Date.now()-lastShot<250)return;lastShot=Date.now();
- const m=new THREE.Mesh(new THREE.SphereGeometry(.16,10,8),mat(0x24f7ff));
- m.position.set(hero.position.x,1.1,hero.position.z-.8);scene.add(m);shots.push({m,life:55});say('PEW PEW! Laser attack! 🔵');
+ if(!running){say('Press Start / Restart first!');return;}
+ const now=performance.now();
+ if(now-lastShot<180)return;
+ lastShot=now;
+ const mesh=new THREE.Mesh(new THREE.SphereGeometry(.15,10,8),material(0x31f7ff));
+ mesh.position.set(hero.position.x,1.4,hero.position.z-.65);
+ scene.add(mesh);shots.push({mesh,life:65});
 }
 function karate(){
- if(!running){say('Press Start first, warrior!');return}
- if(Date.now()-lastKick<600)return;lastKick=Date.now();
- let target=null,distance=3.5;
- robots.forEach(r=>{const d=r.position.distanceTo(hero.position);if(d<distance){distance=d;target=r}});
- if(!target){say('HI-YAA! Eyoba kicked the air! 😂');return}
- target.userData.hp--;
- if(target.userData.hp<=0){scene.remove(target);robots=robots.filter(r=>r!==target);score+=100;say('Robot defeated! Karate champion! 🥋')}
- else say('KARATE HIT! One more hit! 🥋');
- update();checkWin();
+ if(!running){say('Start the game first!');return;}
+ const now=performance.now();
+ if(now-lastKick<450)return;
+ lastKick=now;
+ let target=null,d=2.8;
+ robots.forEach(r=>{
+  const dd=r.position.distanceTo(hero.position);
+  if(dd<d){d=dd;target=r;}
+ });
+ if(!target){say('HI-YAA! You karate-kicked the air! 😂');return;}
+ target.userData.hp-=2;
+ if(target.userData.hp<=0){
+  scene.remove(target);robots=robots.filter(r=>r!==target);
+  score+=100;coins+=2;
+  document.getElementById('coins').textContent=coins;
+  say('🥋 KARATE KNOCKOUT! +100 points!');
+ }else say('Karate hit! Enemy still standing — hit again!');
+ updateUI();
+ if(!robots.length)nextLevel();
 }
-function checkWin(){if(robots.length===0&&running){running=false;score+=200;update();say('CAMPUS SAVED! EYOBA IS THE CHAMPION! 🏆🎉')}}
-function resize(){if(!renderer)return;camera.aspect=arena.clientWidth/arena.clientHeight;camera.updateProjectionMatrix();renderer.setSize(arena.clientWidth,arena.clientHeight)}
+function setMove(v){move=v;}
+function stopMove(){move='';}
+function sprintToggle(){
+ sprinting=!sprinting;
+ say(sprinting?'⚡ Sprint activated!':'Sprint turned off.');
+}
+function resize(){
+ if(!renderer)return;
+ camera.aspect=arena.clientWidth/arena.clientHeight;
+ camera.updateProjectionMatrix();
+ renderer.setSize(arena.clientWidth,arena.clientHeight);
+}
 function animate(){
- requestAnimationFrame(animate);if(!renderer)return;
- if(running){
-  const step=.075;
-  if(move==='forward')hero.position.z-=step;
-  if(move==='back')hero.position.z+=step;
-  if(move==='left')hero.position.x-=step;
-  if(move==='right')hero.position.x+=step;
-  hero.position.x=THREE.MathUtils.clamp(hero.position.x,-13,13);hero.position.z=THREE.MathUtils.clamp(hero.position.z,-13,8);
+ requestAnimationFrame(animate);
+ if(!renderer)return;
+ const now=performance.now();
+ const dt=Math.min(.04,(now-(animate.last||now))/1000);
+ animate.last=now;
+ if(running&&hero){
+  const speed=(sprinting?8.5:5.2)*dt;
+  if(move==='forward')hero.position.z-=speed;
+  if(move==='back')hero.position.z+=speed;
+  if(move==='left')hero.position.x-=speed;
+  if(move==='right')hero.position.x+=speed;
+  hero.position.x=THREE.MathUtils.clamp(hero.position.x,-16,16);
+  hero.position.z=THREE.MathUtils.clamp(hero.position.z,-18,12);
   robots.slice().forEach(r=>{
-   const dx=hero.position.x-r.position.x,dz=hero.position.z-r.position.z,d=Math.hypot(dx,dz)||1;
-   r.position.x+=dx/d*.012;r.position.z+=dz/d*.012;r.lookAt(hero.position.x,1,hero.position.z);
-   if(d<1.35&&Math.random()<.012){health=Math.max(0,health-5);update();if(health===0){running=false;say('MISSION FAILED! Restart and fight again! 💙')}}
+   const dx=hero.position.x-r.position.x;
+   const dz=hero.position.z-r.position.z;
+   const d=Math.hypot(dx,dz)||1;
+   r.position.x+=dx/d*r.userData.speed*dt;
+   r.position.z+=dz/d*r.userData.speed*dt;
+   r.lookAt(hero.position.x,1,hero.position.z);
+   if(d<1.5&&now-lastHit>450){
+    health-=r.userData.attack;lastHit=now;updateUI();
+    say('Enemy punched you! Keep moving and fight back! 😤');
+    if(health<=0){
+     running=false;
+     say('💥 DEFEATED ON LEVEL '+level+'. Press Restart to try again.');
+    }
+   }
   });
   shots.forEach(s=>{
-   s.m.position.z-=.35;s.life--;
+   s.mesh.position.z-=.65;s.life--;
    robots.slice().forEach(r=>{
-    if(s.life>0&&s.m.position.distanceTo(new THREE.Vector3(r.position.x,r.position.y+1,r.position.z))<1.2){
+    if(s.life>0&&s.mesh.position.distanceTo(new THREE.Vector3(r.position.x,r.position.y+1.3,r.position.z))<1.25){
      s.life=0;r.userData.hp--;
-     if(r.userData.hp<=0){scene.remove(r);robots=robots.filter(e=>e!==r);score+=50;coins+=5;document.getElementById('coins').textContent=coins;say('TARGET DESTROYED! +50 points! 💥')}
-     else say('Direct hit! Keep shooting! 🎯');
-     update();checkWin();
+     if(r.userData.hp<=0){
+      scene.remove(r);robots=robots.filter(e=>e!==r);
+      score+=50;coins++;
+      document.getElementById('coins').textContent=coins;
+      say('🎯 ENEMY DOWN! +50 points!');
+     }else say('Hit! This enemy needs another shot!');
+     updateUI();
+     if(!robots.length)nextLevel();
     }
    });
   });
-  shots=shots.filter(s=>{if(s.life<=0){scene.remove(s.m);return false}return true});
+  shots=shots.filter(s=>{
+   if(s.life<=0){scene.remove(s.mesh);return false;}
+   return true;
+  });
  }
- camera.position.x+=(hero.position.x-camera.position.x)*.04;
- camera.position.z+=(hero.position.z+9-camera.position.z)*.04;
- camera.lookAt(hero.position.x,1,hero.position.z-2);
+ camera.position.x+=(hero.position.x-camera.position.x)*.07;
+ camera.position.z+=(hero.position.z+9-camera.position.z)*.07;
+ camera.lookAt(hero.position.x,1.1,hero.position.z-2);
  renderer.render(scene,camera);
 }
 function init3D(){
- if(!window.THREE){say('3D engine could not load. Check internet and refresh.');return}
- scene=new THREE.Scene();scene.background=new THREE.Color(0x8edaff);scene.fog=new THREE.Fog(0x8edaff,24,65);
- camera=new THREE.PerspectiveCamera(65,arena.clientWidth/arena.clientHeight,.1,100);camera.position.set(0,8,12);
- renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.setSize(arena.clientWidth,arena.clientHeight);arena.innerHTML='';arena.appendChild(renderer.domElement);
+ if(!window.THREE){say('3D engine failed to load. Check internet, then refresh.');return;}
+ scene=new THREE.Scene();
+ scene.background=new THREE.Color(0x9bdcff);
+ scene.fog=new THREE.Fog(0x9bdcff,30,75);
+ camera=new THREE.PerspectiveCamera(65,arena.clientWidth/arena.clientHeight,.1,120);
+ camera.position.set(0,8,13);
+ renderer=new THREE.WebGLRenderer({antialias:true});
+ renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
+ renderer.setSize(arena.clientWidth,arena.clientHeight);
+ arena.innerHTML='';
+ arena.appendChild(renderer.domElement);
  scene.add(new THREE.HemisphereLight(0xffffff,0x304060,2));
- const sun=new THREE.DirectionalLight(0xffffff,2);sun.position.set(-5,12,8);scene.add(sun);
- const floor=new THREE.Mesh(new THREE.PlaneGeometry(60,60),mat(0x4fbd86));floor.rotation.x=-Math.PI/2;floor.position.y=-.12;scene.add(floor);
- const grid=new THREE.GridHelper(60,30,0xffffff,0x4c9d87);grid.position.y=-.1;scene.add(grid);
- for(let i=0;i<7;i++){const x=-18+i*6;block(scene,3,3+(i%3),2,0xd7e8ff,x,1,-12);for(let j=0;j<3;j++)block(scene,.35,.35,.1,0x2686c9,x-.8+j*.8,1.5,-10.96)}
- for(let i=0;i<10;i++){const x=(Math.random()-.5)*35,z=-4-Math.random()*17;block(scene,.35,1.4,.35,0x80522d,x,.7,z);const l=new THREE.Mesh(new THREE.SphereGeometry(1,10,8),mat(0x18894c));l.position.set(x,1.9,z);scene.add(l)}
- block(scene,7,.25,.3,0x1260b9,0,4,-11);
- hero=makeHero();for(let i=0;i<5;i++)makeRobot((i-2)*3,-4-i*2);
- update();window.addEventListener('resize',resize);animate();say('Press Start to begin the mission! 💙');
+ const sun=new THREE.DirectionalLight(0xffffff,2.2);
+ sun.position.set(-5,14,8);scene.add(sun);
+ const floor=new THREE.Mesh(new THREE.PlaneGeometry(70,70),material(0x4fbd86));
+ floor.rotation.x=-Math.PI/2;floor.position.y=-.12;scene.add(floor);
+ const grid=new THREE.GridHelper(70,35,0xffffff,0x368d76);
+ grid.position.y=-.1;scene.add(grid);
+ for(let i=0;i<9;i++){
+  let x=-24+i*6;
+  block(scene,3,3+(i%3),2,0xd7e8ff,x,1,-19);
+  for(let j=0;j<3;j++)block(scene,.35,.35,.1,0x2686c9,x-.8+j*.8,1.5,-17.96);
+ }
+ for(let i=0;i<14;i++){
+  let x=(Math.random()-.5)*45,z=-7-Math.random()*27;
+  block(scene,.35,1.5,.35,0x80522d,x,.75,z);
+  const leaves=new THREE.Mesh(new THREE.SphereGeometry(1,10,8),material(0x18894c));
+  leaves.position.set(x,2,z);scene.add(leaves);
+ }
+ block(scene,8,.25,.3,0x1260b9,0,4,-18);
+ hero=makeMan(0,4,false);
+ updateUI();
+ window.addEventListener('resize',resize);
+ animate();
+ say('Ready! Press Start Level to begin.');
 }
-window.startGame=startGame;window.shoot=shoot;window.karate=karate;
+window.startGame=startGame;
+window.shoot=shoot;
+window.karate=karate;
+window.setMove=setMove;
+window.stopMove=stopMove;
+window.sprintToggle=sprintToggle;
 window.addEventListener('keydown',e=>{
  const k=e.key.toLowerCase();
  if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();
- if(k==='arrowup'||k==='w')move='forward';if(k==='arrowdown'||k==='s')move='back';
- if(k==='arrowleft'||k==='a')move='left';if(k==='arrowright'||k==='d')move='right';
- if(e.code==='Space')shoot();if(k==='k')karate();
+ if(k==='w'||k==='arrowup')move='forward';
+ if(k==='s'||k==='arrowdown')move='back';
+ if(k==='a'||k==='arrowleft')move='left';
+ if(k==='d'||k==='arrowright')move='right';
+ if(k===' '||e.code==='Space')shoot();
+ if(k==='k')karate();
+ if(k==='shift')sprinting=true;
 });
-window.addEventListener('keyup',e=>{if(['arrowup','arrowdown','arrowleft','arrowright','w','a','s','d'].includes(e.key.toLowerCase()))move=''});
-try{init3D()}catch(e){say('Could not start 3D. Refresh and check your internet connection.')}
+window.addEventListener('keyup',e=>{
+ const k=e.key.toLowerCase();
+ if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k))move='';
+ if(k==='shift')sprinting=false;
+});
+try{init3D();}catch(e){say('Could not start 3D. Refresh and check your internet connection.');}
 </script>
 </body>
 </html>
