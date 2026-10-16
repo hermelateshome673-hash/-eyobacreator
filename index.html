@@ -6,189 +6,293 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>💚 Eyoba Universe</title>
 <style>
+:root{--g:#39ff88;--bg:#06110a;--panel:#0b2014;--muted:#a9c8b3;--gold:#ffd65a;--pink:#ff4fa3}
 *{box-sizing:border-box}
-body{margin:0;background:#06110a;color:#effff4;font-family:Arial,sans-serif;text-align:center}
-header{padding:18px;background:#0b2013;border-bottom:2px solid #39ff88}
-h1,h2{color:#39ff88}
-main{max-width:850px;margin:auto;padding:18px}
-.card{background:#0b2013;border:1px solid #39ff88;border-radius:18px;padding:22px;margin:20px 0}
-.photo{width:150px;height:150px;object-fit:cover;object-position:center 25%;border-radius:50%;border:4px solid #39ff88;box-shadow:0 0 25px #39ff88}
-button{background:#39ff88;color:#06110a;border:0;border-radius:9px;padding:12px;margin:5px;font-weight:bold;cursor:pointer}
-button:hover{background:#a4ff67}
-.answer{display:block;width:100%;max-width:440px;margin:9px auto}
-#result,#gameMessage{min-height:28px;color:#a4ff67;margin:15px}
-canvas{width:100%;background:#020804;border:2px solid #39ff88;border-radius:12px;touch-action:manipulation}
-small{color:#a9c8b3}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:radial-gradient(ellipse at top,#16432a,#06110a 55%,#020604);color:#effff4;font:16px Arial,sans-serif;line-height:1.6}
+nav{position:sticky;top:0;z-index:5;background:#06110aee;border-bottom:1px solid #245538;padding:12px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px}
+nav a{color:white;text-decoration:none;margin:5px}
+.brand,h1 span,.green{color:var(--g)}
+.brand{font-weight:900}
+button{background:linear-gradient(120deg,var(--g),#c7ff6b);border:0;border-radius:10px;padding:11px 15px;margin:4px;font-weight:bold;cursor:pointer}
+button:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.secondary{background:#10291a;color:white;border:1px solid #245538}
+.wrap{max-width:1050px;margin:auto;padding:22px 18px}
+.hero{min-height:85vh;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+h1{font-size:clamp(42px,7vw,78px);line-height:1;margin:15px 0}
+h2{text-align:center;font-size:clamp(28px,5vw,42px);margin-bottom:8px}
+h3{color:#c7ff6b}
+.lead,.intro,.muted{color:var(--muted)}
+.heroPhoto{width:min(100%,350px);height:420px;object-fit:cover;object-position:center 25%;border:3px solid var(--g);border-radius:45% 45% 20px 20px;box-shadow:0 0 40px #39ff8844}
+.photoFallback{display:none;padding:25px;border:2px dashed var(--g);border-radius:20px}
+.pills span{display:inline-block;border:1px solid #245538;border-radius:30px;padding:5px 10px;margin:4px;color:#c7ff6b}
+.stats,.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.stat,.card{background:linear-gradient(145deg,#0d2417,#07130c);border:1px solid #245538;border-radius:18px;padding:20px;margin:12px 0;box-shadow:0 10px 30px #0003}
+.stat strong{display:block;font-size:25px;color:var(--g)}
+.section{padding:40px 0;scroll-margin-top:60px}
+.intro{text-align:center;max-width:700px;margin:0 auto 24px}
+.progress{height:10px;background:#1c3826;border-radius:20px;overflow:hidden;margin:12px 0}
+.progress div{height:100%;background:linear-gradient(90deg,var(--g),var(--pink));width:0}
+.question{font-size:22px;font-weight:bold}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.answer{background:#10291a;color:white;border:1px solid #28563a;text-align:left}
+.answer.correct{background:#123c25;border-color:var(--g)}
+.answer.wrong{background:#3c142b;border-color:var(--pink)}
+.message{min-height:28px;color:#c7ff6b;font-weight:bold}
+canvas{display:block;width:100%;height:auto;touch-action:manipulation}
+.gameBox{border:1px solid var(--g);border-radius:18px;overflow:hidden;background:#020704}
+.badge{opacity:.45;filter:grayscale(1)}
+.badge.unlocked{opacity:1;filter:none;border-color:var(--gold)}
+.secret{display:none;border:1px dashed var(--gold);color:var(--gold);padding:20px;border-radius:15px}
+.feature{width:100%;height:190px;object-fit:cover;object-position:center 25%;border-radius:12px}
+.quote{text-align:center;font-size:clamp(22px,4vw,34px);font-weight:bold;color:#c7ff6b}
+footer{text-align:center;padding:28px;color:var(--muted);border-top:1px solid #245538}
+#toast{display:none;position:fixed;bottom:15px;left:50%;transform:translateX(-50%);background:var(--g);color:#06110a;padding:12px;border-radius:12px;z-index:10;font-weight:bold}
+.amText{display:none}
+body.am .enText{display:none}
+body.am .amText{display:block}
+@media(max-width:720px){.hero{grid-template-columns:1fr;text-align:center;min-height:auto}.heroPhoto{width:260px;height:330px}.grid{grid-template-columns:1fr}.answers{grid-template-columns:1fr}.navlinks{display:none}.stats{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
-<header><h1>💚 @EYOBA UNIVERSE 🌌</h1>
-<p>Play • Learn • Laugh • Level Up!</p></header>
-<main>
-<section class="card">
-<img class="photo" src="eyoba.jpg" alt="Eyoba's photo">
-<h2>😎 Welcome to Eyoba's World!</h2>
-<p>Do you know Eyob Yeshitla?</p>
-<button onclick="know(true)">YES 😎</button>
-<button onclick="know(false)">NO 😂</button>
-<p id="knowResult"></p>
+<nav>
+ <div class="brand">💚 EYOBA UNIVERSE</div>
+ <div class="navlinks"><a href="#about">About</a><a href="#quiz">Quiz</a><a href="#run">Game</a><a href="#rewards">Rewards</a><a href="#secretRoom">Secret</a></div>
+ <button class="secondary" onclick="toggleLang()" id="langButton">🇪🇹 አማርኛ</button>
+</nav>
+
+<main class="wrap">
+<section class="hero" id="home">
+ <div>
+  <p class="green">WELCOME TO YOUR DIGITAL WORLD ✨</p>
+  <h1>THE <span>EYOBA</span><br>UNIVERSE 🌌</h1>
+  <p class="lead enText">Your own interactive world! Play games, answer questions, earn XP, collect coins and unlock secrets.</p>
+  <p class="lead amText">ወደ ኢዮባ ዓለም እንኳን በደህና መጡ! ጨዋታ ይጫወቱ፣ ጥያቄዎችን ይመልሱ እና ሽልማት ያግኙ።</p>
+  <div class="pills"><span>🎮 Game zone</span><span>🧠 Quiz time</span><span>🔐 Secret room</span></div>
+  <p><a href="#quiz"><button>EXPLORE NOW 🚀</button></a><a href="#run"><button class="secondary">PLAY GAME 🎮</button></a></p>
+  <div class="stats">
+   <div class="stat"><strong id="topXP">0</strong>⚡ XP</div>
+   <div class="stat"><strong id="topCoins">0</strong>🪙 Coins</div>
+   <div class="stat"><strong id="topLevel">1</strong>🏆 Level</div>
+  </div>
+ </div>
+ <div style="text-align:center">
+  <img class="heroPhoto" src="eyoba.jpg" alt="Eyob's photo" onerror="this.style.display='none';document.getElementById('photoFallback').style.display='block'">
+  <div id="photoFallback" class="photoFallback">📸 Photo not loading.<br>Upload a file named <b>eyoba.jpg</b> beside index.html.</div>
+  <p class="green">✨ MAIN CHARACTER ENERGY ✨</p>
+ </div>
 </section>
 
-<section class="card">
-<h2>🧠 Eyoba Quiz</h2>
-<p id="count"></p><h3 id="question"></h3>
-<div id="answers"></div>
-<p id="result"></p>
-<button onclick="next()">➡️ Next Question</button>
-<button onclick="restart()">🔄 Restart Quiz</button>
-<p>⚡ XP: <b id="xp">0</b> | 🪙 Coins: <b id="coins">0</b></p>
+<section class="section" id="about">
+ <h2>🌟 About the Eyoba Universe</h2>
+ <p class="intro">Welcome to a personal world of games, jokes, challenges, achievements and surprises. Scroll down to discover everything!</p>
+ <div class="grid">
+  <article class="card"><h3>👑 Eyoba Vibe</h3><p class="muted">Confidence, curiosity, humor and main-character energy.</p></article>
+  <article class="card"><h3>⚡ Earn Rewards</h3><p class="muted">Answer quiz questions and play the game to earn XP and levels.</p></article>
+  <article class="card"><h3>🌌 Explore</h3><p class="muted">Explore the page and find the secret room hidden below.</p></article>
+ </div>
 </section>
 
-<section class="card">
-<h2>🏃 Eyoba Run</h2>
-<p>Jump over red obstacles and collect gold coins!</p>
-<canvas id="game" width="800" height="300"></canvas>
-<p id="gameMessage">Press START to play!</p>
-<button onclick="start()">▶️ START / RESTART</button>
-<button onclick="jump()">⬆️ JUMP!</button>
-<p><small>Computer: press SPACE or ↑. Phone: tap JUMP.</small></p>
-<p>🏆 Best score: <b id="best">0</b></p>
+<section class="section" id="quiz">
+ <h2>🧠 Do You Know Eyob?</h2>
+ <p class="intro">Choose an answer! Each correct answer earns 15 XP. Have fun! 😎</p>
+ <div class="card">
+  <p><span id="qCount">Question 1</span> / 12</p>
+  <div class="progress"><div id="qProgress"></div></div>
+  <p class="question" id="question"></p>
+  <div class="answers" id="answers"></div>
+  <p class="message" id="quizMessage"></p>
+  <button onclick="nextQuestion()">NEXT QUESTION ➜</button>
+  <button class="secondary" onclick="restartQuiz()">↻ Restart Quiz</button>
+ </div>
 </section>
 
-<section class="card">
-<h2>🔐 Secret Room</h2>
-<p>Earn 100 XP to unlock the secret!</p>
-<button onclick="secret()">Unlock Secret ✨</button>
-<p id="secretResult"></p>
+<section class="section" id="run">
+ <h2>🏃 EYOBA RUN</h2>
+ <p class="intro">Jump over the red obstacles and collect gold coins. Your own photo becomes the runner!</p>
+ <div class="gameBox">
+  <canvas id="game" width="900" height="320"></canvas>
+  <div style="text-align:center;padding:12px">
+   <button onclick="startGame()">▶ START / RESTART</button>
+   <button onclick="jump()">⬆ JUMP</button>
+   <button class="secondary" onclick="pauseGame()">⏸ PAUSE</button>
+  </div>
+ </div>
+ <div class="grid">
+  <div class="card"><h3>🎯 Score</h3><strong id="score">0</strong></div>
+  <div class="card"><h3>🪙 Coins this run</h3><strong id="runCoins">0</strong></div>
+  <div class="card"><h3>🏆 Best run</h3><strong id="bestScore">0</strong></div>
+ </div>
+ <p class="message" id="gameMessage">Press START, then SPACE or ↑ to jump. On mobile, tap JUMP.</p>
 </section>
-<footer><p>💚 Made for the Eyoba Universe 💚</p></footer>
+
+<section class="section" id="rewards">
+ <h2>🏆 Achievements & Levels</h2>
+ <p class="intro">Earn XP, unlock badges and become an Eyoba legend!</p>
+ <div class="grid">
+  <div class="card badge" id="badge1"><h3>🌱 First Steps</h3><p>Earn 15 XP</p></div>
+  <div class="card badge" id="badge2"><h3>🧠 Quiz Genius</h3><p>Earn 75 XP</p></div>
+  <div class="card badge" id="badge3"><h3>🏃 Runner</h3><p>Collect 5 coins</p></div>
+  <div class="card badge" id="badge4"><h3>👑 Legend</h3><p>Earn 150 XP</p></div>
+  <div class="card badge" id="badge5"><h3>🪙 Coin Hunter</h3><p>Collect 10 coins</p></div>
+  <div class="card badge" id="badge6"><h3>🔐 Secret Finder</h3><p>Open the secret room</p></div>
+ </div>
+ <div class="card">
+  <h3>📈 Your progress</h3>
+  <p>Level <b id="level">1</b> · <b id="xpText">0 XP</b></p>
+  <div class="progress"><div id="levelProgress"></div></div>
+  <p class="muted" id="levelHint">Earn XP to reach the next level!</p>
+ </div>
+</section>
+
+<section class="section" id="gallery">
+ <h2>📸 Eyoba Gallery</h2>
+ <p class="intro">The main character of this universe deserves the spotlight.</p>
+ <div class="grid">
+  <div class="card"><img class="feature" src="eyoba.jpg" alt="Eyob portrait" onerror="this.style.display='none'"><h3>✨ Main Character</h3><p class="muted">One photo, one universe, lots of stories.</p></div>
+  <div class="card"><div class="feature" style="display:grid;place-items:center;font-size:65px;background:radial-gradient(circle,#1e5735,#030805)">⚡🟢🌌</div><h3>🌌 Neon Mode</h3><p class="muted">Green glow, dark space and futuristic energy.</p></div>
+  <div class="card"><div class="feature" style="display:grid;place-items:center;font-size:65px;background:radial-gradient(circle,#51316e,#030805)">🎮🪙🏆</div><h3>🎮 Game Zone</h3><p class="muted">Jump, collect coins, level up and try again.</p></div>
+ </div>
+</section>
+
+<section class="section" id="secretRoom">
+ <h2>🔐 The Secret Room</h2>
+ <p class="intro">Earn 100 XP to unlock the hidden message.</p>
+ <div class="card" style="text-align:center">
+  <p style="font-size:50px">🗝️</p>
+  <button onclick="unlockSecret()">TRY TO UNLOCK ✨</button>
+  <p id="secretMessage" class="message"></p>
+  <div id="secret" class="secret">
+   <h3>🎉 YOU FOUND IT!</h3>
+   <p class="quote">“Stay cool. Stay smart. Keep shining. 💚”</p>
+   <p>You're officially an Eyoba Universe legend! 👑</p>
+   <p>እንኳን ደስ አለህ! 🌟</p>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="card" style="text-align:center">
+  <h2>💚 Your Story. Your Energy. Your Universe.</h2>
+  <p class="quote">KEEP SHINING ✨</p>
+  <p class="muted">Thanks for visiting the Eyoba Universe. Play again and beat your best score!</p>
+  <a href="#home"><button>⬆ BACK TO TOP</button></a>
+ </div>
+</section>
 </main>
+<footer>💚 EYOBA UNIVERSE · Made with games, curiosity and good vibes ✨</footer>
+<div id="toast"></div>
 
 <script>
-function know(yes){
- document.getElementById("knowResult").textContent=yes?
- "😂 What is his behavior? GOOD 😇 or BAD 😈? You decide!":
- "😱 GET OUT OF THIS WEBSITE! Just joking 😂";
- if(yes){
-  let b=document.createElement("button");
-  b.textContent="GOOD 😇";b.onclick=()=>alert("😇 Eyob is GOOD!");
-  document.getElementById("knowResult").appendChild(b);
-  let c=document.createElement("button");
-  c.textContent="BAD 😈";c.onclick=()=>alert("😈 Haha, you chose BAD!");
-  document.getElementById("knowResult").appendChild(c);
- }
-}
 const questions=[
- {q:"🎓 Which university does Eyob study at?",a:["Debre Berhan University","Addis Ababa University","Bahir Dar University","Hawassa University"],c:0},
- {q:"😎 Which is Eyob's best body feature?",a:["Hair 💇","Nose 👃","Eyes 👀","Neck 🦒"],c:2},
- {q:"🧠 Is Eyob smart?",a:["Yes, very smart","Not at all","Only sometimes","I don't know"],c:0},
- {q:"⚽ What is Eyob's favorite subject?",a:["Maths ➗","Geography 🌍","History 🏺","Sport ⚽"],c:3},
- {q:"🎮 What do you collect in Eyoba Run?",a:["Gold coins 🪙","Shoes 👟","Books 📚","Clouds ☁️"],c:0},
- {q:"🏃 How do you jump in the game?",a:["SPACE or ↑","Press M","Close the page","Do nothing"],c:0},
- {q:"😂 Choose Eyob's vibe!",a:["😎 Cool","😴 Sleepy","👻 Ghost","🤖 Robot"],c:0},
- {q:"🔐 How much XP unlocks the secret room?",a:["10 XP","50 XP","100 XP","1000 XP"],c:2}
+ {q:"🎓 Which university does Eyob study at?",a:["Debre Berhan University","Addis Ababa University","Bahir Dar University","Hawassa University"],c:0,why:"🎓 Debre Berhan University!"},
+ {q:"😎 Which body feature do you choose as Eyob's best?",a:["Hair 💇","Nose 👃","Eyes 👀","Neck 🦒"],c:2,why:"👀 Eyes win this fun quiz!"},
+ {q:"🧠 Is Eyob smart?",a:["Yes, very smart 🧠","No, never 🤪","Only on Fridays 😂","The computer decides 🤖"],c:0,why:"🧠 Big-brain energy!"},
+ {q:"⚽ What is Eyob's favorite subject?",a:["Maths ➗","Geography 🌍","History 🏺","Sport ⚽"],c:3,why:"⚽ Sport is the favorite!"},
+ {q:"💚 Pick the Eyoba universe color.",a:["Neon green 🟢","Grey 🩶","Brown 🤎","Invisible 👻"],c:0,why:"🟢 Neon green all the way!"},
+ {q:"🏃 What do you jump over in Eyoba Run?",a:["Red obstacles 🟥","A mountain of books 📚","A spaceship 🚀","A giant cake 🎂"],c:0,why:"🏃 Jump over those red obstacles!"},
+ {q:"🪙 What do you collect in the game?",a:["Gold coins 🪙","Leaves 🍃","Socks 🧦","Clouds ☁️"],c:0,why:"🪙 Collect the coins!"},
+ {q:"🔐 How much XP unlocks the secret room?",a:["10 XP","50 XP","100 XP","1000 XP"],c:2,why:"🔓 100 XP opens the secret room!"},
+ {q:"😂 Choose Eyob's vibe.",a:["Cool 😎","Sleepy 😴","Ghost 👻","Robot 🤖"],c:0,why:"😎 Cool energy!"},
+ {q:"🎮 What key makes Eyoba jump on a computer?",a:["SPACE or ↑","Caps Lock","Tab only","Escape"],c:0,why:"⬆ SPACE or Arrow Up!"},
+ {q:"🌍 Which school subject studies places and the Earth?",a:["Geography 🌍","History 🏺","Maths ➗","Sport ⚽"],c:0,why:"🌍 Geography studies places and the Earth!"},
+ {q:"👑 What do you become after earning lots of XP?",a:["Eyoba Legend 👑","A potato 🥔","A cloud ☁️","A sleepy cat 🐱"],c:0,why:"👑 An Eyoba Legend!"}
 ];
-let qi=0,answered=false,xp=0,coins=0;
+let qIndex=0,answered=false;
+let state={xp:0,coins:0,best:0,secret:false};
+try{state={...state,...JSON.parse(localStorage.getItem("eyobaUniverseSave")||"{}")}}catch(e){}
+function save(){try{localStorage.setItem("eyobaUniverseSave",JSON.stringify(state))}catch(e){}updateUI()}
+function toast(t){let el=document.getElementById("toast");el.textContent=t;el.style.display="block";clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display="none",2200)}
+function updateUI(){
+ let level=Math.floor(state.xp/100)+1;
+ document.getElementById("topXP").textContent=state.xp;
+ document.getElementById("topCoins").textContent=state.coins;
+ document.getElementById("topLevel").textContent=level;
+ document.getElementById("level").textContent=level;
+ document.getElementById("xpText").textContent=state.xp+" XP";
+ document.getElementById("levelProgress").style.width=(state.xp%100)+"%";
+ document.getElementById("levelHint").textContent=(100-state.xp%100)+" XP until next level";
+ document.getElementById("bestScore").textContent=state.best;
+ [["badge1",state.xp>=15],["badge2",state.xp>=75],["badge3",state.coins>=5],["badge4",state.xp>=150],["badge5",state.coins>=10],["badge6",state.secret]].forEach(([id,on])=>document.getElementById(id).classList.toggle("unlocked",on));
+}
 function showQuestion(){
- answered=false;
- let q=questions[qi];
- document.getElementById("count").textContent="Question "+(qi+1)+" of "+questions.length;
+ answered=false;let q=questions[qIndex];
+ document.getElementById("qCount").textContent="Question "+(qIndex+1);
+ document.getElementById("qProgress").style.width=((qIndex+1)/questions.length*100)+"%";
  document.getElementById("question").textContent=q.q;
- document.getElementById("result").textContent="";
- let area=document.getElementById("answers");area.innerHTML="";
- q.a.forEach((a,i)=>{
-  let b=document.createElement("button");
-  b.className="answer";b.textContent=a;
-  b.onclick=()=>answer(i);area.appendChild(b);
- });
+ document.getElementById("quizMessage").textContent="";
+ let box=document.getElementById("answers");box.innerHTML="";
+ q.a.forEach((label,i)=>{let b=document.createElement("button");b.className="answer";b.textContent=label;b.onclick=()=>chooseAnswer(i);box.appendChild(b)});
 }
-function answer(i){
- if(answered)return;answered=true;
- let q=questions[qi];
- if(i===q.c){xp+=20;document.getElementById("result").textContent="🎉 Correct! +20 XP";}
- else document.getElementById("result").textContent="😂 Correct answer: "+q.a[q.c];
- document.getElementById("xp").textContent=xp;
- [...document.querySelectorAll(".answer")].forEach(b=>b.disabled=true);
+function chooseAnswer(i){
+ if(answered)return;answered=true;let q=questions[qIndex];
+ [...document.querySelectorAll(".answer")].forEach((b,j)=>{b.disabled=true;if(j===q.c)b.classList.add("correct");if(j===i&&i!==q.c)b.classList.add("wrong")});
+ if(i===q.c){state.xp+=15;document.getElementById("quizMessage").textContent="🎉 Correct! +15 XP. "+q.why;toast("+15 XP! 🎉")}
+ else document.getElementById("quizMessage").textContent="😂 Nice try! "+q.why;
+ save();
 }
-function next(){qi=(qi+1)%questions.length;showQuestion()}
-function restart(){qi=0;showQuestion()}
-function secret(){
- document.getElementById("secretResult").textContent=xp>=100?
- "🔓 SECRET UNLOCKED! 👑 You are an Eyoba legend!":
- "🔒 Keep playing! You need "+(100-xp)+" more XP.";
+function nextQuestion(){qIndex=(qIndex+1)%questions.length;showQuestion()}
+function restartQuiz(){qIndex=0;showQuestion()}
+function unlockSecret(){
+ if(state.xp>=100){state.secret=true;document.getElementById("secret").style.display="block";document.getElementById("secretMessage").textContent="🔓 Secret unlocked!";save();toast("Secret room unlocked! 👑")}
+ else document.getElementById("secretMessage").textContent="🔒 You need "+(100-state.xp)+" more XP. Try the quiz and game!";
 }
+function toggleLang(){document.body.classList.toggle("am");document.getElementById("langButton").textContent=document.body.classList.contains("am")?"🇬🇧 English":"🇪🇹 አማርኛ"}
 
-const canvas=document.getElementById("game");
-const ctx=canvas.getContext("2d");
-const photo=new Image();photo.src="eyoba.jpg";
-let player,obstacles,gameCoins,frame,score,running,over,best=0;
-function reset(){
- player={x:80,y:210,w:42,h:50,vy:0,ground:true};
- obstacles=[];gameCoins=[];frame=0;score=0;running=true;over=false;
- document.getElementById("gameMessage").textContent="🏃 Run, Eyoba, run!";
+// Eyoba Run game: floor and obstacles share the same ground line.
+const canvas=document.getElementById("game"),ctx=canvas.getContext("2d");
+const sprite=new Image();sprite.src="eyoba.jpg";
+let player,obstacles=[],gameCoins=[],frame=0,score=0,gameRunning=false,gameOver=false,paused=false,runCoinCount=0;
+function initGame(){
+ player={x:75,y:210,w:42,h:50,vy:0,grounded:true};
+ obstacles=[];gameCoins=[];frame=0;score=0;runCoinCount=0;gameOver=false;paused=false;gameRunning=true;
+ document.getElementById("gameMessage").textContent="🏃 Run, Eyob! Jump and collect coins!";
+ syncGameStats();drawGame();
 }
-function start(){reset()}
-function jump(){
- if(!running){if(over||!player){start();return}return}
- if(player.ground){player.vy=-12;player.ground=false}
-}
-canvas.addEventListener("pointerdown",()=>{if(!running)start();else jump()});
-document.addEventListener("keydown",e=>{
- if(e.code==="Space"||e.code==="ArrowUp"){
-  if(!running)start();else jump();
-  e.preventDefault();
- }
-});
+function startGame(){initGame()}
+function jump(){if(!gameRunning){if(gameOver||!player)startGame();return}if(player.grounded){player.vy=-12.5;player.grounded=false}}
+function pauseGame(){if(gameRunning){paused=!paused;document.getElementById("gameMessage").textContent=paused?"⏸ Paused. Press START to restart.":"🏃 Keep running!"}}
+canvas.addEventListener("pointerdown",()=>{if(!gameRunning)startGame();else jump()});
+document.addEventListener("keydown",e=>{if(e.code==="Space"||e.code==="ArrowUp"){if(!gameRunning)startGame();else jump();e.preventDefault()}});
+function syncGameStats(){document.getElementById("score").textContent=score||0;document.getElementById("runCoins").textContent=runCoinCount}
 function endGame(){
- running=false;over=true;best=Math.max(best,score);
- document.getElementById("best").textContent=best;
- document.getElementById("gameMessage").textContent=
- "💥 Game over! Score: "+score+". Coins: "+coins+". Press START to try again!";
- xp+=Math.floor(score/10)+coins*2;coins=0;
- document.getElementById("xp").textContent=xp;
- document.getElementById("coins").textContent=coins;
+ if(!gameRunning)return;gameRunning=false;gameOver=true;
+ let earned=Math.floor(score/10)+runCoinCount*3;
+ state.best=Math.max(state.best,score);state.coins+=runCoinCount;state.xp+=earned;
+ document.getElementById("gameMessage").textContent="💥 Game over! Score "+score+". Earned "+earned+" XP and "+runCoinCount+" coins. Press START to try again!";
+ save();syncGameStats();toast("Run rewards added! 🏆");
 }
-function draw(){
- ctx.clearRect(0,0,800,300);
- ctx.fillStyle="#06110a";ctx.fillRect(0,0,800,300);
- ctx.fillStyle="#39ff88";ctx.fillRect(0,260,800,3);
- if(player){
-  if(photo.complete&&photo.naturalWidth)ctx.drawImage(photo,player.x,player.y,player.w,player.h);
-  else {ctx.fillStyle="#39ff88";ctx.fillRect(player.x,player.y,player.w,player.h)}
+function drawGame(){
+ ctx.clearRect(0,0,900,320);
+ let grad=ctx.createLinearGradient(0,0,0,320);grad.addColorStop(0,"#07170e");grad.addColorStop(1,"#020604");
+ ctx.fillStyle=grad;ctx.fillRect(0,0,900,320);
+ for(let i=0;i<16;i++){ctx.fillStyle="#39ff8830";ctx.fillRect((i*83-frame*.4+900)%900,40+(i%4)*34,2,2)}
+ ctx.strokeStyle="#39ff88";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,260);ctx.lineTo(900,260);ctx.stroke();
+ ctx.fillStyle="#39ff8814";ctx.fillRect(0,263,900,57);
+ if(player){if(sprite.complete&&sprite.naturalWidth)ctx.drawImage(sprite,player.x-4,player.y-7,player.w+8,player.h+10);else{ctx.fillStyle="#39ff88";ctx.fillRect(player.x,player.y,player.w,player.h)}}
+ ctx.shadowBlur=10;ctx.shadowColor="#ff4165";
+ obstacles.forEach(o=>{ctx.fillStyle="#ff4165";ctx.fillRect(o.x,o.y,o.w,o.h);ctx.fillStyle="#ff9aaa";ctx.fillRect(o.x+4,o.y+4,4,6)});
+ ctx.shadowBlur=8;ctx.shadowColor="#ffd65a";
+ gameCoins.forEach(c=>{ctx.beginPath();ctx.arc(c.x,c.y,9,0,Math.PI*2);ctx.fillStyle="#ffd65a";ctx.fill();ctx.strokeStyle="#fff0a8";ctx.stroke()});
+ ctx.shadowBlur=0;ctx.fillStyle="#effff4";ctx.font="bold 19px Arial";ctx.fillText("SCORE "+score,20,30);ctx.fillText("COINS "+runCoinCount,160,30);
+ if(!gameRunning){ctx.fillStyle="#39ff88";ctx.font="bold 28px Arial";ctx.textAlign="center";ctx.fillText(gameOver?"GAME OVER":"EYOBA RUN",450,100);ctx.textAlign="left"}
+}
+function gameLoop(){
+ if(gameRunning&&!paused){
+  frame++;score++;player.vy+=.62;player.y+=player.vy;
+  if(player.y>=260-player.h){player.y=260-player.h;player.vy=0;player.grounded=true}
+  if(frame%78===0)obstacles.push({x:910,y:228,w:25+Math.random()*10,h:32});
+  if(frame%92===0)gameCoins.push({x:910,y:150+Math.random()*65});
+  obstacles.forEach(o=>o.x-=5.3);gameCoins.forEach(c=>c.x-=5.3);
+  obstacles=obstacles.filter(o=>o.x+o.w>0);gameCoins=gameCoins.filter(c=>c.x>-20);
+  for(const o of obstacles){if(player.x+player.w-8>o.x+3&&player.x+8<o.x+o.w-3&&player.y+player.h-5>o.y+3){endGame();break}}
+  gameCoins=gameCoins.filter(c=>{if(Math.abs(player.x+player.w/2-c.x)<25&&Math.abs(player.y+player.h/2-c.y)<32){runCoinCount++;syncGameStats();return false}return true});
+  syncGameStats();
  }
- ctx.fillStyle="#ff4055";
- obstacles.forEach(o=>ctx.fillRect(o.x,o.y,o.w,o.h));
- gameCoins.forEach(c=>{
-  ctx.beginPath();ctx.arc(c.x,c.y,9,0,7);
-  ctx.fillStyle="#ffd84d";ctx.fill();
- });
- ctx.fillStyle="#effff4";ctx.font="bold 20px Arial";
- ctx.fillText("Score: "+score+"   Coins: "+coins,20,30);
- if(!running){ctx.textAlign="center";ctx.fillText(over?"GAME OVER":"EYOBA RUN",400,90);ctx.textAlign="left"}
+ drawGame();requestAnimationFrame(gameLoop);
 }
-function loop(){
- if(running){
-  frame++;score++;
-  player.vy+=.6;player.y+=player.vy;
-  if(player.y>=260-player.h){player.y=260-player.h;player.vy=0;player.ground=true}
-  if(frame%85===0)obstacles.push({x:810,y:230,w:25,h:30});
-  if(frame%95===0)gameCoins.push({x:810,y:150+Math.random()*60});
-  obstacles.forEach(o=>o.x-=5);
-  gameCoins.forEach(c=>c.x-=5);
-  obstacles=obstacles.filter(o=>o.x+o.w>0);
-  gameCoins=gameCoins.filter(c=>c.x>-10);
-  for(let o of obstacles){
-   if(player.x+player.w>o.x+3&&player.x<o.x+o.w-3&&player.y+player.h>o.y+3){endGame();break}
-  }
-  gameCoins=gameCoins.filter(c=>{
-   if(Math.abs(player.x+player.w/2-c.x)<24&&Math.abs(player.y+player.h/2-c.y)<30){
-    coins++;document.getElementById("coins").textContent=coins;return false
-   }return true
-  });
- }
- draw();requestAnimationFrame(loop);
-}
-reset();running=false;showQuestion();loop();
+showQuestion();updateUI();if(state.secret)document.getElementById("secret").style.display="block";
+initGame();gameRunning=false;drawGame();requestAnimationFrame(gameLoop);
 </script>
 </body>
 </html>
