@@ -1,108 +1,46 @@
-
-<!-- Eyoba Universe: Email Registration -->
-<section id="eyoba-register" style="
-  max-width: 430px;
-  margin: 40px auto;
-  padding: 28px;
-  border-radius: 20px;
-  background: #101b35;
-  color: white;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 0 25px #168cff55;
-">
-  <h2 style="text-align:center;color:#65c7ff;">
-    🌌 Join Eyoba Universe
-  </h2>
-  <p style="text-align:center;">
-    Create your own Eyoba Universe account!
-  </p>
-
-  <form id="eyobaRegisterForm">
-    <label for="eyobaEmail">Email address</label>
-    <input
-      id="eyobaEmail"
-      type="email"
-      placeholder="you@example.com"
-      autocomplete="email"
-      required
-      style="display:block;box-sizing:border-box;width:100%;padding:12px;margin:8px 0 18px;border-radius:9px;"
-    >
-
-    <label for="eyobaPassword">Create a password</label>
-    <input
-      id="eyobaPassword"
-      type="password"
-      placeholder="At least 8 characters"
-      minlength="8"
-      autocomplete="new-password"
-      required
-      style="display:block;box-sizing:border-box;width:100%;padding:12px;margin:8px 0 18px;border-radius:9px;"
-    >
-
-    <label for="eyobaConfirmPassword">Confirm your password</label>
-    <input
-      id="eyobaConfirmPassword"
-      type="password"
-      placeholder="Enter the password again"
-      minlength="8"
-      autocomplete="new-password"
-      required
-      style="display:block;box-sizing:border-box;width:100%;padding:12px;margin:8px 0 12px;border-radius:9px;"
-    >
-
-    <label style="display:block;margin:12px 0;">
-      <input type="checkbox" id="eyobaShowPassword">
-      Show passwords
-    </label>
-
-    <button type="submit" style="
-      width:100%;
-      padding:13px;
-      border:0;
-      border-radius:10px;
-      background:#168cff;
-      color:white;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
-    ">
-      Create Account ✨
-    </button>
-
-    <p id="eyobaRegisterMessage"
-       role="status"
-       style="text-align:center;margin-top:16px;"></p>
-  </form>
-</section>
-
+ 
 <script>
-(() => {
-  const form = document.getElementById("eyobaRegisterForm");
-  const email = document.getElementById("eyobaEmail");
-  const password = document.getElementById("eyobaPassword");
-  const confirmPassword =
-    document.getElementById("eyobaConfirmPassword");
-  const showPassword = document.getElementById("eyobaShowPassword");
-  const message = document.getElementById("eyobaRegisterMessage");
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("#eyoba-register form");
+  const message = document.querySelector("#eyoba-register-message");
 
-  showPassword.addEventListener("change", () => {
-    const type = showPassword.checked ? "text" : "password";
-    password.type = type;
-    confirmPassword.type = type;
-  });
+  if (!form) {
+    console.error("Registration form not found.");
+    return;
+  }
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    if (password.value !== confirmPassword.value) {
-      message.textContent = "❌ Passwords do not match.";
+    const email = form.querySelector('input[type="email"]');
+    const passwords = form.querySelectorAll('input[type="password"]');
+
+    if (!email || passwords.length < 2) {
+      alert("Please check the registration form fields.");
       return;
     }
 
-    message.textContent =
-      "🛠️ Form checked! Account creation is not connected yet. " +
-      "Connect Supabase to register securely.";
+    if (!email.checkValidity()) {
+      email.reportValidity();
+      return;
+    }
+
+    if (passwords[0].value.length < 8) {
+      alert("Your new password must have at least 8 characters.");
+      return;
+    }
+
+    if (passwords[0].value !== passwords[1].value) {
+      alert("The passwords do not match. Please try again.");
+      return;
+    }
+
+    if (message) {
+      message.textContent =
+        "Your form is working! Real account creation is not connected yet.";
+    } else {
+      alert("Your form is working! Real account creation is not connected yet.");
+    }
   });
-})();
+});
 </script>
- 
