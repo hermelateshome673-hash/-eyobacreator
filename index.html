@@ -1,186 +1,188 @@
- 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eyoba Universe</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071126">
+<title>Eyoba Universe ✦</title>
 <style>
-:root{--bg:#061225;--panel:#102642;--text:#effaff;--muted:#b1c7db;--blue:#59c7ff}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;transition:.4s}
-body.day{--bg:#dff3ff;--panel:#fff;--text:#09203a;--muted:#36566e}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer;font-size:1rem}
-.space{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 10%,#174477,transparent 40%),radial-gradient(ellipse at 80% 55%,#172d65,transparent 35%),var(--bg)}
-.space:after{content:"";position:absolute;inset:0;background-image:radial-gradient(2px 2px at 40px 60px,#fff 50%,transparent),radial-gradient(1px 1px at 120px 180px,#9beaff 50%,transparent);background-size:180px 180px;animation:stars 25s linear infinite}
-@keyframes stars{to{background-position:180px 360px}}
-nav{position:sticky;top:0;background:#061225dd;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #59c7ff55;z-index:5}
-nav strong{font-size:1.2rem}nav span{color:var(--blue)}
-nav a{margin:0 6px}
-.wrap{width:min(1050px,92%);margin:auto}
-.hero{text-align:center;padding:80px 0 60px}
-.planet{width:145px;height:145px;border-radius:50%;margin:0 auto 28px;background:radial-gradient(circle at 30% 25%,#fff,#68d9ff 12%,#2878db 45%,#11164c 75%);box-shadow:0 0 70px #249dff88;animation:float 4s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-12px)}}
-h1{font-size:clamp(2.5rem,8vw,5.5rem);margin:15px 0}
-h1 span{color:#77dfff}
-p{line-height:1.7;color:var(--muted)}
-.btn{background:#123b60;color:white;border:1px solid #59c7ff88;border-radius:30px;padding:12px 18px;margin:5px}
-.primary{background:linear-gradient(120deg,#1688d7,#514fff)}
-.stats,.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:20px}
-.stat,.card{background:var(--panel);border:1px solid #59c7ff44;border-radius:18px;padding:18px}
-section{padding:45px 0}
-h2{font-size:2rem}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.card h3{margin-top:5px}
-.card button{max-width:100%}
-.destination{font-size:2.5rem}
-.progress{height:10px;background:#59c7ff33;border-radius:20px;overflow:hidden}
-.progress div{height:100%;width:0;background:#59c7ff;transition:.3s}
-input[type=text]{width:70%;padding:12px;border-radius:10px;border:1px solid #59c7ff;background:var(--bg);color:var(--text)}
-#chat{white-space:pre-wrap;background:#06122533;padding:15px;border-radius:12px;min-height:60px}
-footer{text-align:center;padding:30px;border-top:1px solid #59c7ff44}
-@media(max-width:700px){.grid{grid-template-columns:1fr}nav{flex-wrap:wrap;gap:10px}.hero{padding-top:50px}}
-</style>
-</head>
-<body>
-<div class="space"></div>
-<nav>
-<strong>✦ EYOBA <span>UNIVERSE</span></strong>
-<div><a href="#rewards">Rewards</a><a href="#ethiopia">Ethiopia</a><a href="#nova">Nova</a><button class="btn" id="theme">☀️/🌙</button></div>
-</nav>
-
-<header class="hero wrap">
-<div class="planet"></div>
-<p>WELCOME TO YOUR COSMIC WORLD</p>
-<h1>Eyoba <span>Universe</span></h1>
-<p>Explore amazing places, collect rewards, meet Nova, and discover your own little universe.</p>
-<div class="actions"><a class="btn primary" href="#ethiopia">🚀 Start Exploring</a><a class="btn" href="#rewards">🏆 My Rewards</a></div>
-<div class="stats">
-<div class="stat">⭐ Level <b id="levelTop">1</b></div>
-<div class="stat">⚡ XP <b id="xpTop">0</b></div>
-<div class="stat">🪙 Coins <b id="coinsTop">0</b></div>
-</div>
-</header>
-
-<main class="wrap">
-<section id="rewards">
-<h2>🏆 XP and Cosmic Rewards</h2>
-<p>Explore destinations and complete missions to level up!</p>
-<div class="grid">
-<div class="card">
-<h3>⚡ Your Progress</h3>
-<p>XP: <b id="xp">0</b></p>
-<div class="progress"><div id="bar"></div></div>
-<p>Next level: <span id="next">100</span> XP</p>
-<p>Title: <b id="title">Curious Visitor</b></p>
-</div>
-<div class="card">
-<h3>🎯 Missions</h3>
-<p><button class="btn" id="mission1">Explore a destination +25 XP</button></p>
-<p><button class="btn" id="mission2">Say hello to Nova +15 XP</button></p>
-<p><button class="btn" id="mission3">Answer the quiz +20 XP</button></p>
-</div>
-<div class="card">
-<h3>🎁 Welcome Gift</h3>
-<p>Claim your special welcome bonus!</p>
-<button class="btn primary" id="bonus">Claim +10 XP and 25 coins</button>
-<p id="gift"></p>
-</div>
-</div>
-</section>
-
-<section id="ethiopia">
-<h2>🇪🇹 Ethiopia Explorer</h2>
-<p>Discover beautiful destinations and earn XP.</p>
-<div class="grid">
-<div class="card"><div class="destination">⛰️</div><h3>Simien Mountains</h3><p>Dramatic peaks and breathtaking highland scenery.</p><button class="btn explore" data-name="Simien Mountains">Explore +25 XP</button></div>
-<div class="card"><div class="destination">🌲</div><h3>Bale Mountains</h3><p>Highland forests and distinctive wildlife.</p><button class="btn explore" data-name="Bale Mountains">Explore +25 XP</button></div>
-<div class="card"><div class="destination">💧</div><h3>Blue Nile Falls</h3><p>A celebrated waterfall known locally as Tis Abay.</p><button class="btn explore" data-name="Blue Nile Falls">Explore +25 XP</button></div>
-<div class="card"><div class="destination">⛪</div><h3>Lalibela</h3><p>Famous for its remarkable rock-hewn churches.</p><button class="btn explore" data-name="Lalibela">Explore +25 XP</button></div>
-<div class="card"><div class="destination">🌊</div><h3>Lake Tana</h3><p>Ethiopia's largest lake, with islands and historic monasteries.</p><button class="btn explore" data-name="Lake Tana">Explore +25 XP</button></div>
-<div class="card"><div class="destination">🌌</div><h3>Stargazer's Ridge</h3><p>Imagine a quiet highland night under the stars.</p><button class="btn explore" data-name="Stargazer's Ridge">Explore +25 XP</button></div>
-</div>
-</section>
-
-<section id="nova">
-<h2>🤖 Meet Nova, Your Companion</h2>
-<div class="card">
-<h3>💙 Hello, explorer!</h3>
-<div id="chat">Nova: Welcome to Eyoba Universe! Ask me for a joke, a destination, or motivation.</div>
-<p><input id="message" type="text" placeholder="Write a message to Nova..."><button class="btn primary" id="send">Send</button></p>
-<button class="btn quick" data-msg="joke">😂 Tell me a joke</button>
-<button class="btn quick" data-msg="place">🗺️ Suggest a destination</button>
-<button class="btn quick" data-msg="motivate">✨ Motivate me</button>
-<p><small>Nova is a simple built-in demo companion, not a connected online AI service.</small></p>
-</div>
-</section>
-
-<section id="quiz">
-<h2>🧠 Universe Quiz</h2>
-<div class="card">
-<h3>Which place is famous for its rock-hewn churches?</h3>
-<button class="btn answer" data-correct="false">Lake Tana</button>
-<button class="btn answer" data-correct="true">Lalibela</button>
-<button class="btn answer" data-correct="false">Bale Mountains</button>
-<p id="quizResult"></p>
-</div>
-</section>
-</main>
-<footer>✦ Eyoba Universe · Stay curious and keep shining 💙</footer>
-
-<script>
-(function(){
-let xp=0,coins=0,bonus=false,done={},quizDone=false;
-try{
-let saved=JSON.parse(localStorage.getItem("eyobaMiniSave")||"null");
-if(saved){xp=saved.xp||0;coins=saved.coins||0;bonus=!!saved.bonus;done=saved.done||{};quizDone=!!saved.quizDone}
-}catch(e){}
-function level(){return Math.floor(xp/100)+1}
-function title(){return level()>=10?"Universe Legend":level()>=5?"Cosmic Explorer":level()>=3?"Star Navigator":"Curious Visitor"}
-function save(){try{localStorage.setItem("eyobaMiniSave",JSON.stringify({xp,coins,bonus,done,quizDone}))}catch(e){}}
-function render(){
-document.getElementById("xp").textContent=xp;
-document.getElementById("xpTop").textContent=xp;
-document.getElementById("coinsTop").textContent=coins;
-document.getElementById("levelTop").textContent=level();
-document.getElementById("bar").style.width=(xp%100)+"%";
-document.getElementById("next").textContent=100-(xp%100);
-document.getElementById("title").textContent=title();
-document.getElementById("bonus").disabled=bonus;
-document.querySelectorAll(".explore").forEach(b=>{b.disabled=!!done[b.dataset.name];if(b.disabled)b.textContent="Explored ✓"});
-document.getElementById("mission1").disabled=!!done.m1;
-document.getElementById("mission2").disabled=!!done.m2;
-document.getElementById("mission3").disabled=!!done.m3;
+:root {
+  --bg:#050b19;
+  --panel:rgba(15,29,58,.88);
+  --panel2:#122345;
+  --text:#f4f7ff;
+  --muted:#aab9d7;
+  --cyan:#5df3ff;
+  --blue:#58a6ff;
+  --purple:#a68bff;
+  --line:#7bb8ff33;
 }
-function reward(x,c,msg){xp+=x;coins+=c;save();render();alert(msg+" +"+x+" XP and +"+c+" coins!")}
-document.getElementById("theme").onclick=()=>{document.body.classList.toggle("day");try{localStorage.setItem("eyobaDay",document.body.classList.contains("day")?"1":"0")}catch(e){}};
-try{if(localStorage.getItem("eyobaDay")==="1")document.body.classList.add("day")}catch(e){}
-document.querySelectorAll(".explore").forEach(b=>b.onclick=()=>{let n=b.dataset.name;if(done[n])return;done[n]=true;reward(25,10,"You explored "+n+"!");save()});
-document.getElementById("mission1").onclick=()=>{if(!done.m1){done.m1=true;reward(25,10,"Mission completed!")}};
-document.getElementById("mission2").onclick=()=>{if(!done.m2){done.m2=true;reward(15,5,"Mission completed!")}};
-document.getElementById("mission3").onclick=()=>{if(!done.m3){done.m3=true;reward(20,8,"Mission completed!")}};
-document.getElementById("bonus").onclick=()=>{if(!bonus){bonus=true;reward(10,25,"Welcome bonus claimed!");document.getElementById("gift").textContent="Welcome, cosmic explorer! 🎉"}};
-function talk(v){
-v=v.toLowerCase();let ans="I'm still learning! Ask me for a joke, a destination, or motivation. 🌌";
-if(v.includes("joke"))ans="Why did the star go to school? To become brighter! ⭐";
-else if(v.includes("place")||v.includes("destination")||v.includes("ethiopia"))ans="Explore the Simien Mountains or visit Lalibela to discover its famous rock-hewn churches. 🇪🇹";
-else if(v.includes("motivate")||v.includes("help"))ans="Small steps still move you forward. Keep exploring and let your curiosity shine! ✨";
-else if(v.includes("hi")||v.includes("hello"))ans="Hello, cosmic explorer! 👋 Welcome back to Eyoba Universe.";
-document.getElementById("chat").textContent="Nova: "+ans;
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:85px; }
+body {
+  margin:0;
+  background:radial-gradient(ellipse at 15% 5%,#173e7638,transparent 35%),
+  radial-gradient(ellipse at 85% 35%,#652ba52b,transparent 35%),var(--bg);
+  color:var(--text);
+  font:16px/1.65 system-ui,Segoe UI,sans-serif;
 }
-document.getElementById("send").onclick=()=>talk(document.getElementById("message").value);
-document.getElementById("message").onkeydown=e=>{if(e.key==="Enter")talk(e.target.value)};
-document.querySelectorAll(".quick").forEach(b=>b.onclick=()=>talk(b.dataset.msg));
-document.querySelectorAll(".answer").forEach(b=>b.onclick=()=>{
-if(quizDone)return;quizDone=true;
-if(b.dataset.correct==="true"){document.getElementById("quizResult").textContent="Correct! +20 XP and 8 coins! 🎉";reward(20,8,"Correct answer!")}
-else document.getElementById("quizResult").textContent="Not quite! The answer is Lalibela.";
-document.querySelectorAll(".answer").forEach(x=>x.disabled=true);
-save();
-});
-render();
-})();
-</script>
-</body>
-</html>
+body.light {
+  --bg:#edf4ff;
+  --panel:#ffffffdf;
+  --panel2:#e1ecff;
+  --text:#152442;
+  --muted:#526787;
+  --line:#4673ad33;
+}
+a { color:inherit; text-decoration:none; }
+button,input,textarea { font:inherit; }
+button { cursor:pointer; }
+.container { width:min(1180px,92%); margin:auto; }
+header {
+  position:sticky; top:0; z-index:10;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+.nav {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px; min-height:72px;
+}
+.brand { font-weight:950; }
+.brand span,.cyan { color:var(--cyan); }
+.links { display:flex; gap:16px; flex-wrap:wrap; }
+.links a { color:var(--muted); font-size:.9rem; }
+.links a:hover { color:var(--cyan); }
+.nav button,.btn,.smallbtn {
+  border:1px solid var(--line);
+  border-radius:12px; padding:10px 14px;
+  background:var(--panel); color:var(--text);
+}
+.btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px;
+  background:linear-gradient(110deg,var(--cyan),var(--blue));
+  color:#071326; font-weight:850; border:0;
+}
+.btn.alt {
+  background:var(--panel);
+  border:1px solid var(--line);
+  color:var(--text);
+}
+.menu { display:none; }
+.hero { padding:72px 0 45px; }
+.heroGrid {
+  display:grid; grid-template-columns:1.1fr .9fr;
+  align-items:center; gap:35px;
+}
+.eyebrow,.tag {
+  display:inline-block; border:1px solid var(--line);
+  border-radius:30px; padding:5px 11px;
+  color:var(--cyan); background:var(--panel);
+  font-size:.78rem; font-weight:800;
+}
+h1 {
+  font-size:clamp(2.8rem,6vw,5.5rem);
+  line-height:1.03; letter-spacing:-3px; margin:20px 0;
+}
+.gradient {
+  background:linear-gradient(100deg,#5df3ff,#74a8ff,#c0a2ff);
+  background-clip:text; color:transparent;
+}
+.lead { font-size:1.08rem; color:var(--muted); max-width:640px; }
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin:24px 0; }
+.miniStats { display:flex; gap:24px; flex-wrap:wrap; }
+.miniStats strong { display:block; font-size:1.2rem; }
+.miniStats span { color:var(--muted); font-size:.82rem; }
+.spaceArt { min-height:390px; display:grid; place-items:center; position:relative; }
+.planet {
+  width:205px; height:205px; border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,#b6ffff,#308ce9 35%,#252d8b 68%,#080c29);
+  box-shadow:0 0 55px #3c9bff66,inset -25px -20px 35px #02051b;
+  position:relative;
+}
+.planet:after {
+  content:""; position:absolute; left:-40px; top:76px;
+  width:280px; height:55px;
+  border:13px solid #a3eaff65;
+  border-left-color:transparent; border-right-color:transparent;
+  border-radius:50%; transform:rotate(-24deg);
+}
+.orbit {
+  position:absolute; width:365px; height:365px;
+  border:1px solid #5df3ff4a; border-radius:50%;
+  animation:spin 36s linear infinite;
+}
+.orbit.two {
+  width:295px; height:295px; border-color:#aa8dff66;
+  animation-direction:reverse; animation-duration:23s;
+}
+.orbDot {
+  position:absolute; top:40px; left:70px;
+  width:17px; height:17px; border-radius:50%;
+  background:var(--cyan); box-shadow:0 0 20px var(--cyan);
+}
+.float {
+  position:absolute; background:var(--panel);
+  border:1px solid var(--line); padding:12px 15px;
+  border-radius:15px; box-shadow:0 14px 40px #0003;
+}
+.float.one { right:0; top:35px; }
+.float.two { left:0; bottom:30px; }
+@keyframes spin { to { transform:rotate(360deg); } }
+section { padding:54px 0; }
+.sectionHead {
+  display:flex; align-items:end; justify-content:space-between;
+  gap:18px; margin-bottom:24px;
+}
+.sectionHead h2 {
+  font-size:clamp(1.8rem,4vw,2.7rem);
+  line-height:1.15; margin:5px 0;
+}
+.sectionHead p { color:var(--muted); margin:0; }
+.kicker { font-size:.75rem; letter-spacing:2px; color:var(--cyan); font-weight:900; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+.card {
+  min-width:0; background:var(--panel);
+  border:1px solid var(--line); border-radius:22px;
+  padding:22px; box-shadow:0 18px 48px #0002;
+  transition:transform .2s,border-color .2s;
+}
+.card:hover { transform:translateY(-3px); border-color:#5df3ff70; }
+.card h3 { margin:9px 0 5px; }
+.card p { color:var(--muted); margin:8px 0 15px; }
+.ico {
+  width:52px; height:52px; display:grid; place-items:center;
+  border-radius:16px; background:linear-gradient(135deg,#2c6fd344,#9a7bff32);
+  border:1px solid var(--line); font-size:1.6rem;
+}
+.profileGrid { display:grid; grid-template-columns:.8fr 1.2fr; gap:18px; }
+.profile { text-align:center; }
+.portrait {
+  width:190px; height:190px; object-fit:cover;
+  object-position:center; border-radius:50%;
+  border:4px solid var(--cyan);
+  box-shadow:0 0 0 9px #58a6ff1c,0 0 38px #58a6ff44;
+  background:var(--panel2);
+}
+.level { font-size:2.3rem; font-weight:950; color:var(--cyan); }
+.track {
+  height:10px; border-radius:20px; background:var(--panel2);
+  overflow:hidden; border:1px solid var(--line);
+}
+.fill {
+  height:100%; width:0;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--purple));
+  transition:width .3s;
+}
+.stats { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.stat { background:var(--panel2); border:1px solid var(--line); border-radius:16px; padding:16px; }
+.stat span { display:block; color:var(--muted); font-size:.82rem; }
+.stat strong { font-size:1.5rem; }
+.mission {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 0; border-bottom:1px solid var(--line);
+}
+.mission:last-child { border:0; }
+.missionInfo { flex:1; }
+.missionInfo small { display:block; color:var(--muted); }
+.smallbtn:disabled { opacity:.45; cursor:default; } 
