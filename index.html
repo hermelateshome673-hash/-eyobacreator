@@ -1,573 +1,108 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#071b20">
-<title>Eyoba Universe | Explore Nature</title>
-<style>
-:root{--bg:#071b20;--panel:#102a30;--text:#f4fff9;--muted:#b8d4ce;--accent:#79f0c0;--line:#31534e}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Arial,sans-serif;line-height:1.6}
-body.light{--bg:#eaf5ef;--panel:#fff;--text:#12332a;--muted:#46675b;--accent:#087b55;--line:#c2ddd0}
-a{color:inherit}
-button{font:inherit;cursor:pointer;border:1px solid #ffffff30;border-radius:12px;padding:10px 15px;color:white;background:linear-gradient(120deg,#087e70,#2563a8);font-weight:700}
-button:hover{filter:brightness(1.15);transform:translateY(-1px)}
-button:focus-visible,a:focus-visible{outline:3px solid #f5df78;outline-offset:3px}
-header{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#102c29}
-#heroVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.heroShade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#031513b8,#03151350),linear-gradient(0deg,var(--bg),transparent 60%)}
-.heroContent{position:relative;z-index:2;padding:45px 20px;max-width:900px}
-.eyebrow{text-transform:uppercase;letter-spacing:4px;color:var(--accent);font-size:.8rem;font-weight:800}
-h1{font-size:clamp(2.7rem,8vw,6.5rem);line-height:1.03;margin:15px 0}
-.heroContent p{font-size:clamp(1rem,2.3vw,1.3rem);color:#e0f5ec}
-nav{position:sticky;top:0;z-index:20;display:flex;gap:9px;justify-content:center;align-items:center;flex-wrap:wrap;padding:12px;background:#071b20ed;backdrop-filter:blur(15px);border-bottom:1px solid #ffffff18}
-nav a{padding:7px 10px;text-decoration:none;border-radius:9px;font-size:.9rem}
-nav a:hover{background:#ffffff18}
-main{max-width:1160px;margin:auto;padding:12px 18px}
-section{padding:38px 0;scroll-margin-top:80px}
-h2{font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.15;margin:8px 0 14px}
-h3{margin:8px 0}
-p{color:var(--muted)}
-.sectionIntro{max-width:720px}
-.panel,.stat,.question,.natureCard{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-.panel{padding:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr));gap:16px}
-.stat{padding:15px}
-.stat strong{display:block;font-size:1.65rem;color:var(--accent)}
-.videoGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px}
-.natureCard video,.natureCard iframe,.natureCard img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:#183d37;border:0}
-.natureCard .cardText{padding:15px}
-.cardText p{font-size:.93rem}
-.tag{display:inline-block;padding:4px 9px;border-radius:99px;background:#1b5548;color:#bfffe6;font-size:.78rem}
-.mini{font-size:.86rem}
-.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
-input,select{max-width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text)}
-#particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;opacity:.42}
-#stars{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:0;background-image:radial-gradient(2px 2px at 30px 40px,#fff 60%,transparent),radial-gradient(1px 1px at 110px 100px,#fff 60%,transparent),radial-gradient(2px 2px at 190px 170px,#fff 60%,transparent);background-size:230px 220px}
-body.night #stars{opacity:.45}
-#gameArena{height:420px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#b9d9e7}
-#gameArena canvas{display:block;width:100%;height:100%}
-.controls{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:12px 0}
-.feedback{min-height:25px;color:var(--accent);font-weight:700}
-.bigEmoji{font-size:35px}
-.answers{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.answers button{background:#294e51}
-.answers button:disabled{opacity:.55}
-#gift{padding:26px;text-align:center;border-radius:22px;background:linear-gradient(135deg,#174c44,#173d68,#593568)}
-#giftBox{font-size:85px;cursor:pointer;user-select:none;transition:transform .25s}
-#giftBox:hover{transform:scale(1.1) rotate(-5deg)}
-#giftResult{display:none;background:#fff;color:#263d50;border-radius:16px;padding:20px;margin-top:15px}
-footer{text-align:center;padding:35px 15px;border-top:1px solid var(--line)}
-#soundNote{font-size:.82rem}
-@media(max-width:600px){header{min-height:76vh}nav{gap:3px}nav a{font-size:.79rem;padding:6px}main{padding:10px 13px}section{padding:27px 0}#gameArena{height:340px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
-</style>
-</head>
-<body>
-<div id="stars"></div>
-<canvas id="particles" aria-hidden="true"></canvas>
+<!-- Eyoba Universe: Email Registration -->
+<section id="eyoba-register" style="
+  max-width: 430px;
+  margin: 40px auto;
+  padding: 28px;
+  border-radius: 20px;
+  background: #101b35;
+  color: white;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 25px #168cff55;
+">
+  <h2 style="text-align:center;color:#65c7ff;">
+    🌌 Join Eyoba Universe
+  </h2>
+  <p style="text-align:center;">
+    Create your own Eyoba Universe account!
+  </p>
 
-<header id="top">
-  <!-- Replace the MP4 URL below with another video you have permission to use.
-       Pexels free video search: https://www.pexels.com/videos/ -->
-  <video id="heroVideo" autoplay muted loop playsinline poster="photo_2026-10-14_13-23-48.jpg">
-    <source src="https://player.vimeo.com/external/269971860.hd.mp4?s=eae965838585cc8342bb5d5253d06a52b2415570&profile_id=174&oauth2_token_id=57447761" type="video/mp4">
-  </video>
-  <div class="heroShade"></div>
-  <div class="heroContent">
-    <div class="eyebrow">A world beyond imagination</div>
-    <h1>EY0BA<br>UNIVERSE</h1>
-    <p>Discover wild beauty. Feel the adventure. Explore your universe.</p>
-    <div class="actions" style="justify-content:center">
-      <button onclick="document.querySelector('#cinema').scrollIntoView({behavior:'smooth'})">🌿 Explore Nature</button>
-      <button onclick="toggleNight()">🌙 Change Atmosphere</button>
-      <button onclick="toggleSound()">🎵 Nature Sounds</button>
-    </div>
-    <p id="soundNote">Video starts muted. Turn sound on whenever you like.</p>
-  </div>
-</header>
+  <form id="eyobaRegisterForm">
+    <label for="eyobaEmail">Email address</label>
+    <input
+      id="eyobaEmail"
+      type="email"
+      placeholder="you@example.com"
+      autocomplete="email"
+      required
+      style="display:block;box-sizing:border-box;width:100%;padding:12px;margin:8px 0 18px;border-radius:9px;"
+    >
 
-<nav aria-label="Main navigation">
-  <a href="#cinema">🎬 Cinema</a>
-  <a href="#discover">🌍 Discover</a>
-  <a href="#ethiopia">🇪🇹 Ethiopia</a>
-  <a href="#quiz">🧠 Quiz</a>
-  <a href="#game">🎮 Game</a>
-  <a href="#gift">🎁 Gift</a>
-</nav>
+    <label for="eyobaPassword">Create a password</label>
+    <input
+      id="eyobaPassword"
+      type="password"
+      placeholder="At least 8 characters"
+      minlength="8"
+      autocomplete="new-password"
+      required
+      style="display:block;box-sizing:border-box;width:100%;padding:12px;margin:8px 0 18px;border-radius:9px;"
+    >
 
-<main>
-<section id="welcome">
-  <div class="eyebrow">Welcome, explorer</div>
-  <h2>Nature is calling. 🌎</h2>
-  <p class="sectionIntro">Escape into the sound of rivers, the power of waterfalls, the quiet of forests, and the mystery of the stars. This is your own little world of discovery.</p>
-  <div class="grid">
-    <div class="stat">⭐ Explorer level<strong id="profileLevel">1</strong></div>
-    <div class="stat">✨ Experience points<strong id="xp">0</strong></div>
-    <div class="stat">🪙 Adventure coins<strong id="coins">0</strong></div>
-    <div class="stat">🌿 Discoveries<strong id="discoveries">0</strong></div>
-  </div>
+    <label for="eyobaConfirmPassword">Confirm your password</label>
+    <input
+      id="eyobaConfirmPassword"
+      type="password"
+      placeholder="Enter the password again"
+      minlength="8"
+      autocomplete="new-password"
+      required
+      style="display:block;box-sizing:border-box;width:100%;padding:12px;margin:8px 0 12px;border-radius:9px;"
+    >
+
+    <label style="display:block;margin:12px 0;">
+      <input type="checkbox" id="eyobaShowPassword">
+      Show passwords
+    </label>
+
+    <button type="submit" style="
+      width:100%;
+      padding:13px;
+      border:0;
+      border-radius:10px;
+      background:#168cff;
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+    ">
+      Create Account ✨
+    </button>
+
+    <p id="eyobaRegisterMessage"
+       role="status"
+       style="text-align:center;margin-top:16px;"></p>
+  </form>
 </section>
-
-<section id="cinema">
-  <div class="eyebrow">The nature cinema</div>
-  <h2>Watch the world breathe. 🎬</h2>
-  <p class="sectionIntro">Explore landscapes and wildlife. These cards include free-to-browse video libraries; choose a clip on the linked site, download it if its license allows, then add its MP4 URL to a video card.</p>
-  <div class="videoGrid">
-    <article class="natureCard">
-      <img loading="lazy" src="https://images.pexels.com/videos/1093662/free-video-1093662.jpg?fit=crop&w=900&h=550&auto=compress&cs=tinysrgb" alt="Water crashing over rocks">
-      <div class="cardText"><span class="tag">Water</span><h3>Waterfall Dreams 🌊</h3><p>Follow the river as it races through the rocks.</p><a href="https://www.pexels.com/search/videos/waterfall/" target="_blank" rel="noopener">Find free waterfall videos ↗</a></div>
-    </article>
-    <article class="natureCard">
-      <img loading="lazy" src="https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Sunlight over a forest">
-      <div class="cardText"><span class="tag">Forest</span><h3>Into the Green 🌲</h3><p>Discover green forests, misty trees, and peaceful trails.</p><a href="https://www.pexels.com/search/videos/forest/" target="_blank" rel="noopener">Find free forest videos ↗</a></div>
-    </article>
-    <article class="natureCard">
-      <img loading="lazy" src="https://images.pexels.com/photos/4577793/pexels-photo-4577793.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Ocean waves">
-      <div class="cardText"><span class="tag">Ocean</span><h3>Blue Planet 🐬</h3><p>Explore waves, coastlines, and underwater worlds.</p><a href="https://www.pexels.com/search/videos/ocean/" target="_blank" rel="noopener">Find free ocean videos ↗</a></div>
-    </article>
-    <article class="natureCard">
-      <img loading="lazy" src="https://images.pexels.com/photos/247502/pexels-photo-247502.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Wild animal in its habitat">
-      <div class="cardText"><span class="tag">Wildlife</span><h3>Wild and Wonderful 🦁</h3><p>Meet the amazing animals sharing our planet.</p><a href="https://www.pexels.com/search/videos/wildlife/" target="_blank" rel="noopener">Find free wildlife videos ↗</a></div>
-    </article>
-    <article class="natureCard">
-      <img loading="lazy" src="https://images.pexels.com/photos/1366919/pexels-photo-1366919.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mountain landscape at sunset">
-      <div class="cardText"><span class="tag">Mountains</span><h3>Above the Clouds 🏔️</h3><p>Travel through giant mountains and golden skies.</p><a href="https://www.pexels.com/search/videos/mountains/" target="_blank" rel="noopener">Find free mountain videos ↗</a></div>
-    </article>
-    <article class="natureCard">
-      <img loading="lazy" src="https://images.pexels.com/photos/1257860/pexels-photo-1257860.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Starry night sky">
-      <div class="cardText"><span class="tag">Night sky</span><h3>Universe After Dark 🌌</h3><p>Look up at the stars and imagine the worlds beyond.</p><a href="https://www.pexels.com/search/videos/night%20sky/" target="_blank" rel="noopener">Find free night-sky videos ↗</a></div>
-    </article>
-  </div>
-  <div class="panel" style="margin-top:18px">
-    <h3>🎞️ Add your own video</h3>
-    <p>Upload a video you own or are licensed to use into your GitHub repository, for example <b>videos/forest.mp4</b>, then replace the image in a card with a video element:</p>
-    <pre style="white-space:pre-wrap;overflow-wrap:anywhere;color:var(--accent)">&lt;video controls preload="metadata" poster="forest.jpg"&gt;
-  &lt;source src="videos/forest.mp4" type="video/mp4"&gt;
-&lt;/video&gt;</pre>
-    <p class="mini">For faster loading, use short, compressed MP4 clips. Do not upload large video files directly to GitHub; use an authorized video host if the file is large.</p>
-  </div>
-</section>
-
-<section id="discover">
-  <div class="eyebrow">Choose your journey</div>
-  <h2>Every click opens a new world. ✨</h2>
-  <div class="grid">
-    <article class="panel"><div style="font-size:42px">🌧️</div><h3>Rainy Forest</h3><p>Imagine rain falling through the trees.</p><button onclick="discover('Rainy Forest')">Explore this world</button></article>
-    <article class="panel"><div style="font-size:42px">🌊</div><h3>Ocean Explorer</h3><p>Discover the beautiful blue planet.</p><button onclick="discover('Ocean Explorer')">Explore this world</button></article>
-    <article class="panel"><div style="font-size:42px">🌠</div><h3>Starry Universe</h3><p>Travel through a world of stars.</p><button onclick="discover('Starry Universe')">Explore this world</button></article>
-    <article class="panel"><div style="font-size:42px">🦋</div><h3>Wildlife Kingdom</h3><p>Learn about the creatures of Earth.</p><button onclick="discover('Wildlife Kingdom')">Explore this world</button></article>
-  </div>
-  <p id="discoverMsg" class="feedback"></p>
-</section>
-
-<section id="ethiopia">
-  <div class="eyebrow">Home is beautiful</div>
-  <h2>Discover Ethiopia 🇪🇹</h2>
-  <p>From dramatic highlands to waterfalls and wildlife, Ethiopia has extraordinary natural landscapes worth exploring and protecting.</p>
-  <div class="grid">
-    <article class="natureCard"><img loading="lazy" src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mountain scenery"><div class="cardText"><h3>⛰️ Mountain Adventures</h3><p>Explore highland scenery and rugged mountain trails.</p><a href="https://www.pexels.com/search/videos/mountains/" target="_blank" rel="noopener">Explore mountain clips ↗</a></div></article>
-    <article class="natureCard"><img loading="lazy" src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Waterfall in a green landscape"><div class="cardText"><h3>💦 Waterfall Wonders</h3><p>Discover the power and beauty of flowing water.</p><a href="https://www.pexels.com/search/videos/waterfall/" target="_blank" rel="noopener">Explore waterfall clips ↗</a></div></article>
-  </div>
-</section>
-
-<section id="quiz">
-  <div class="eyebrow">Eyoba challenge</div>
-  <h2>How well do you know Eyoba? 🧠</h2>
-  <p>Answer the questions, earn XP, and collect coins!</p>
-  <div id="quizList" class="grid"></div>
-  <p id="quizStatus" class="feedback">Ready to play!</p>
-  <button onclick="resetQuiz()">🔄 Try again</button>
-  <h3 style="margin-top:28px">🌟 Five extra fun challenges</h3>
-  <div class="grid">
-    <article class="panel">1. Best free-day plan?<div class="actions"><button onclick="extra(this,'Relax time! 😎')">Relax</button><button onclick="extra(this,'Homework monster! 📚')">Homework</button></div><p class="feedback"></p></article>
-    <article class="panel">2. Funny superpower?<div class="actions"><button onclick="extra(this,'Control the wind! 🌬️')">Control wind</button><button onclick="extra(this,'Potato power! 🥔')">Become potato</button></div><p class="feedback"></p></article>
-    <article class="panel">3. Best study snack?<div class="actions"><button onclick="extra(this,'Pizza champion! 🍕')">Pizza</button><button onclick="extra(this,'Do not eat your notebook! 😂')">Notebook</button></div><p class="feedback"></p></article>
-    <article class="panel">4. Campus wind attack?<div class="actions"><button onclick="extra(this,'Save the papers! 🏃')">Chase papers</button><button onclick="extra(this,'The wind wins! 🤣')">Argue with wind</button></div><p class="feedback"></p></article>
-    <article class="panel">5. What makes a good friend?<div class="actions"><button onclick="extra(this,'Friendship unlocked! 💙')">Kindness</button><button onclick="extra(this,'More exams?! 😭')">More exams</button></div><p class="feedback"></p></article>
-  </div>
-</section>
-
-<section id="jokes">
-  <div class="eyebrow">Campus comedy</div>
-  <h2>Mehal Meda wind jokes 😂</h2>
-  <div class="panel">
-    <p id="jokeText">Click the button and see what the wind is doing today!</p>
-    <button onclick="joke()">😂 Make me laugh</button>
-  </div>
-</section>
-
-<section id="game">
-  <div class="eyebrow">Arcade arena</div>
-  <h2>10-Level 3D Fighting Game 🥋</h2>
-  <p>Play as a human fighter against enemy fighters. Shoot, dodge, sprint, and use karate. Enemies become faster and tougher with each level.</p>
-  <div class="grid">
-    <div class="stat">🏆 Level<strong id="gameLevel">1 / 10</strong></div>
-    <div class="stat">❤️ Health<strong id="health">100</strong></div>
-    <div class="stat">👊 Enemies left<strong id="enemyCount">0</strong></div>
-    <div class="stat">🎯 Score<strong id="score">0</strong></div>
-  </div>
-  <div id="gameArena" aria-label="3D fighting game arena"><div style="padding:30px;color:#153b42">Loading the 3D arena…</div></div>
-  <p class="mini">Computer: WASD or arrow keys to move, Space to shoot, K to karate, Shift to sprint.</p>
-  <p class="mini">Phone: use the touch buttons below. Internet is needed for the 3D engine.</p>
-  <div class="controls">
-    <button onclick="startGame()">🚀 Start / Restart</button>
-    <button onclick="shoot()">🔵 Shoot</button>
-    <button onclick="karate()">🥋 Karate</button>
-    <button onclick="sprintToggle()">⚡ Sprint</button>
-  </div>
-  <div class="controls">
-    <button onpointerdown="setMove('forward')" onpointerup="stopMove()" onpointerleave="stopMove()" onpointercancel="stopMove()">⬆️ Forward</button>
-    <button onpointerdown="setMove('left')" onpointerup="stopMove()" onpointerleave="stopMove()" onpointercancel="stopMove()">⬅️ Left</button>
-    <button onpointerdown="setMove('back')" onpointerup="stopMove()" onpointerleave="stopMove()" onpointercancel="stopMove()">⬇️ Back</button>
-    <button onpointerdown="setMove('right')" onpointerup="stopMove()" onpointerleave="stopMove()" onpointercancel="stopMove()">➡️ Right</button>
-  </div>
-  <p id="gameMessage" class="feedback">Press Start / Restart to begin.</p>
-</section>
-
-<section id="gift">
-  <div class="eyebrow">A special surprise</div>
-  <h2>One little gift for you 🎁</h2>
-  <p>Tap the gift box and discover your friendship surprise.</p>
-  <div id="giftBox" role="button" tabindex="0" aria-label="Open the friendship gift" onclick="openGift()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGift()}">🎁</div>
-  <button onclick="openGift()">Open my gift 💌</button>
-  <div id="giftResult"><div style="font-size:55px">🎉💙🎉</div><h2 style="color:#235d53">CONGRATULATIONS!</h2><h3>Eyoba accepted your friend request! 🤝</h3><p style="color:#354b50">Welcome to the Eyoba Universe family! This is a playful website surprise, not a real social-media notification.</p></div>
-</section>
-</main>
-
-<footer>
-  <p>🌿 EY0BA UNIVERSE · Made with 💙</p>
-  <p class="mini">Nature videos: replaceable clips. Respect each creator's license. Keep the planet beautiful.</p>
-  <a href="#top">⬆️ Back to the top</a>
-</footer>
 
 <script>
-/* ---------- XP, COINS, QUIZ, JOKES AND DISCOVERIES ---------- */
-let xp=0,coins=0,discoveries=0;
-function updateStats(){
- document.getElementById('xp').textContent=xp;
- document.getElementById('coins').textContent=coins;
- document.getElementById('discoveries').textContent=discoveries;
- document.getElementById('profileLevel').textContent=1+Math.floor(xp/50);
-}
-function earn(points,money=0){
- xp+=points;coins+=money;updateStats();
-}
-const questions=[
- ["Which dorm is Eyoba in?",["302","304","205","309"],1],
- ["What field does Eyoba study?",["BAIS","Leadership and Organization","Management","Finance"],0],
- ["Which phone does Eyoba use?",["Samsung","Infinix","iPhone","Tecno"],2],
- ["What is Eyoba's favorite color?",["Black","White","Red","Blue"],3],
- ["How would you describe Eyoba?",["Smart","Fool","Kind","Aggressive"],0],
- ["What is Eyoba's hobby?",["Sport","Drawing","Eating","Reading"],1],
- ["Which color is Eyoba's favorite?",["Blue","Orange","Brown","Grey"],0],
- ["What should be saved from campus wind?",["Notebook","Cloud","Potato","Moon"],0],
- ["What is Eyoba's study field?",["BAIS","Underwater dancing","Cloud counting","Potato studies"],0],
- ["What makes a good friend?",["Kindness and laughter","Homework","Tornado","Angry chicken"],0],
- ["What is the Eyoba Universe motto?",["Dream, study, create, explore","Sleep in every class","Fight notebooks","Run from snacks"],0]
-];
-let answered=new Set();
-function renderQuiz(){
- const list=document.getElementById('quizList');list.innerHTML='';
- questions.forEach((q,i)=>{
-  const box=document.createElement('article');box.className='question';box.style.padding='15px';
-  const title=document.createElement('b');title.textContent=(i+1)+'. '+q[0];box.appendChild(title);
-  const ans=document.createElement('div');ans.className='answers';
-  q[1].forEach((choice,j)=>{
-   const b=document.createElement('button');b.textContent=String.fromCharCode(65+j)+'. '+choice;
-   b.onclick=()=>answer(i,j,b);ans.appendChild(b);
+(() => {
+  const form = document.getElementById("eyobaRegisterForm");
+  const email = document.getElementById("eyobaEmail");
+  const password = document.getElementById("eyobaPassword");
+  const confirmPassword =
+    document.getElementById("eyobaConfirmPassword");
+  const showPassword = document.getElementById("eyobaShowPassword");
+  const message = document.getElementById("eyobaRegisterMessage");
+
+  showPassword.addEventListener("change", () => {
+    const type = showPassword.checked ? "text" : "password";
+    password.type = type;
+    confirmPassword.type = type;
   });
-  box.appendChild(ans);
-  const em=document.createElement('div');em.id='em'+i;em.className='bigEmoji';box.appendChild(em);
-  const fb=document.createElement('div');fb.id='fb'+i;fb.className='feedback';box.appendChild(fb);
-  list.appendChild(box);
- });
-}
-function answer(i,j,b){
- if(answered.has(i))return;
- answered.add(i);
- const good=j===questions[i][2]||(i===4&&j===2);
- b.parentElement.querySelectorAll('button').forEach(x=>x.disabled=true);
- if(good){
-  b.style.background='#147c50';document.getElementById('em'+i).textContent='🤩🎉💙';
-  document.getElementById('fb'+i).textContent='Correct! +10 XP and +5 coins!';
-  earn(10,5);
- }else{
-  b.style.background='#a32b43';document.getElementById('em'+i).textContent='😡💢';
-  document.getElementById('fb'+i).textContent='Wrong! Eyoba is angry! 😂 Correct answer: '+questions[i][1][questions[i][2]];
- }
- document.getElementById('quizStatus').textContent='Answered '+answered.size+' of '+questions.length+' questions!';
-}
-function resetQuiz(){answered.clear();renderQuiz();document.getElementById('quizStatus').textContent='Fresh start! Good luck! 🚀';}
-function extra(b,msg){
- const parent=b.closest('.panel');parent.querySelectorAll('button').forEach(x=>x.disabled=true);
- parent.querySelector('.feedback').textContent=msg;earn(2,1);
-}
-const jokes=[
- "Mehal Meda wind is so strong, even Wi-Fi needs a jacket! 🌬️😂",
- "Eyoba's notebook flew away. Now the wind is studying BAIS! 📒🤣",
- "The campus wind is the champion of stealing homework! 🌪️",
- "The wind took attendance today. Even the papers ran away! 😂",
- "At Mehal Meda, hold your hat or it will graduate without you! 🎓🌬️"
-];
-function joke(){document.getElementById('jokeText').textContent=jokes[Math.floor(Math.random()*jokes.length)];}
-function discover(name){
- discoveries++;earn(5,2);
- document.getElementById('discoverMsg').textContent='✨ You explored '+name+'! +5 XP, +2 coins. Keep discovering!';
-}
-let gifted=false;
-function openGift(){
- document.getElementById('giftResult').style.display='block';
- document.getElementById('giftBox').textContent='🎉';
- if(!gifted){gifted=true;earn(25,20);}
-}
-renderQuiz();
 
-/* ---------- CINEMATIC PARTICLES ---------- */
-const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
-let dots=[];
-function resizeParticles(){
- const dpr=Math.min(window.devicePixelRatio||1,2);
- canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;
- canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';
- ctx.setTransform(dpr,0,0,dpr,0,0);
- dots=Array.from({length:Math.min(75,Math.floor(innerWidth/15))},()=>({
-  x:Math.random()*innerWidth,y:Math.random()*innerHeight,
-  r:Math.random()*2+0.4,v:Math.random()*.45+.12,a:Math.random()*.5+.15
- }));
-}
-function animateParticles(){
- ctx.clearRect(0,0,innerWidth,innerHeight);
- dots.forEach(p=>{
-  p.y-=p.v;p.x+=Math.sin(p.y/70)*.25;
-  if(p.y<-5){p.y=innerHeight+5;p.x=Math.random()*innerWidth;}
-  ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-  ctx.fillStyle='rgba(178,255,224,'+p.a+')';ctx.fill();
- });
- requestAnimationFrame(animateParticles);
-}
-window.addEventListener('resize',resizeParticles);resizeParticles();animateParticles();
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-/* ---------- NIGHT MODE AND OPTIONAL SOUND ---------- */
-function toggleNight(){
- document.body.classList.toggle('night');
- document.body.classList.toggle('light');
- document.getElementById('soundNote').textContent=document.body.classList.contains('night')?'🌙 Night atmosphere enabled.':'☀️ Day atmosphere enabled.';
-}
-let audioCtx=null,master=null,oscillators=[],soundOn=false;
-function toggleSound(){
- if(soundOn){stopNatureSound();return;}
- try{
-  const AC=window.AudioContext||window.webkitAudioContext;
-  if(!AC){document.getElementById('soundNote').textContent='Audio is not supported in this browser.';return;}
-  audioCtx=audioCtx||new AC();audioCtx.resume();
-  master=audioCtx.createGain();master.gain.value=.035;master.connect(audioCtx.destination);
-  const buffer=audioCtx.createBuffer(1,audioCtx.sampleRate*2,audioCtx.sampleRate);
-  const data=buffer.getChannelData(0);
-  for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.5;
-  const noise=audioCtx.createBufferSource();noise.buffer=buffer;noise.loop=true;
-  const filter=audioCtx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=700;
-  noise.connect(filter);filter.connect(master);noise.start();oscillators.push(noise);
-  soundOn=true;document.getElementById('soundNote').textContent='🎵 Gentle ambient sound on. Tap the button to stop.';
- }catch(e){document.getElementById('soundNote').textContent='Sound could not start. Try again after interacting with the page.';}
-}
-function stopNatureSound(){
- oscillators.forEach(o=>{try{o.stop();}catch(e){}});
- oscillators=[];soundOn=false;
- if(master)master.gain.value=0;
- document.getElementById('soundNote').textContent='Nature sound is off.';
-}
-
-/* ---------- 3D HUMAN FIGHTING GAME ---------- */
-let scene,camera,renderer,hero,enemies=[],shots=[],running=false,level=1,health=100,score=0,move='',sprinting=false,lastShot=0,lastKick=0,lastHit=0;
-const arena=document.getElementById('gameArena');
-const say=t=>document.getElementById('gameMessage').textContent=t;
-function mat(c){return new THREE.MeshStandardMaterial({color:c,roughness:.7});}
-function block(parent,w,h,d,c,x,y,z){
- const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));
- m.position.set(x,y,z);parent.add(m);return m;
-}
-function makeMan(x,z,enemy=false){
- const g=new THREE.Group(),skin=enemy?0x9b6848:0xc58a60;
- const shirt=enemy?0xb82948:0x1679e8,pants=enemy?0x343b56:0x243e75;
- block(g,.75,.9,.42,shirt,0,1.05,0);
- block(g,.52,.55,.52,skin,0,1.82,0);
- block(g,.12,.1,.07,0xffffff,-.13,1.87,.27);
- block(g,.12,.1,.07,0xffffff,.13,1.87,.27);
- block(g,.055,.06,.04,0x111111,-.13,1.87,.31);
- block(g,.055,.06,.04,0x111111,.13,1.87,.31);
- block(g,.2,.07,.04,0x42251d,0,1.7,.28);
- block(g,.55,.14,.55,enemy?0x171a25:0x32221a,0,2.13,0);
- block(g,.22,.7,.25,shirt,-.52,1.08,0);
- block(g,.22,.7,.25,shirt,.52,1.08,0);
- block(g,.26,.75,.3,pants,-.2,.38,0);
- block(g,.26,.75,.3,pants,.2,.38,0);
- block(g,.24,.18,.38,0x20222b,-.2,.05,.06);
- block(g,.24,.18,.38,0x20222b,.2,.05,.06);
- g.position.set(x,0,z);g.userData.enemy=enemy;
- g.userData.hp=2+Math.floor(level/3);g.userData.speed=.65+level*.17;
- g.userData.attack=5+level*1.3;scene.add(g);return g;
-}
-function updateGameUI(){
- document.getElementById('health').textContent=Math.max(0,Math.ceil(health));
- document.getElementById('score').textContent=score;
- document.getElementById('enemyCount').textContent=enemies.length;
- document.getElementById('gameLevel').textContent=level+' / 10';
-}
-function spawnLevel(){
- enemies.forEach(r=>scene.remove(r));
- shots.forEach(s=>scene.remove(s.mesh));
- enemies=[];shots=[];
- const count=3+level*2;
- for(let i=0;i<count;i++){
-  const a=Math.PI*2*i/count,r=8+Math.random()*5;
-  enemies.push(makeMan(Math.cos(a)*r,-Math.sin(a)*r-2,true));
- }
- hero.position.set(0,0,4);hero.rotation.y=0;
- health=Math.min(100,health+20);running=true;updateGameUI();
- say('LEVEL '+level+'! '+count+' enemy fighters are coming. Keep moving!');
-}
-function startGame(){
- if(!renderer){say('3D engine not loaded. Check your internet and refresh.');return;}
- level=1;score=0;health=100;spawnLevel();
-}
-function nextLevel(){
- running=false;
- if(level>=10){
-  say('🏆 YOU BEAT ALL 10 LEVELS! You are the ultimate champion! +500 XP and +100 coins!');
-  earn(500,100);return;
- }
- level++;say('LEVEL CLEARED! Loading level '+level+'…');
- setTimeout(()=>{if(renderer)spawnLevel();},1000);
-}
-function shoot(){
- if(!running){say('Press Start / Restart first!');return;}
- const now=performance.now();if(now-lastShot<180)return;lastShot=now;
- const mesh=new THREE.Mesh(new THREE.SphereGeometry(.15,10,8),mat(0x31f7ff));
- mesh.position.set(hero.position.x,1.4,hero.position.z-.65);
- scene.add(mesh);shots.push({mesh,life:65});
-}
-function karate(){
- if(!running){say('Start the game first!');return;}
- const now=performance.now();if(now-lastKick<450)return;lastKick=now;
- let target=null,d=2.8;
- enemies.forEach(r=>{const dd=r.position.distanceTo(hero.position);if(dd<d){d=dd;target=r;}});
- if(!target){say('HI-YAA! You karate-kicked the air! 😂');return;}
- target.userData.hp-=2;
- if(target.userData.hp<=0){
-  scene.remove(target);enemies=enemies.filter(e=>e!==target);score+=100;coins+=2;
-  updateStats();say('🥋 KARATE KNOCKOUT! +100 points!');
- }else say('Karate hit! This enemy needs another hit!');
- updateGameUI();if(!enemies.length)nextLevel();
-}
-function setMove(v){move=v;}
-function stopMove(){move='';}
-function sprintToggle(){sprinting=!sprinting;say(sprinting?'⚡ Sprint activated!':'Sprint turned off.');}
-function resizeGame(){
- if(!renderer)return;
- camera.aspect=arena.clientWidth/arena.clientHeight;camera.updateProjectionMatrix();
- renderer.setSize(arena.clientWidth,arena.clientHeight);
-}
-function animateGame(){
- requestAnimationFrame(animateGame);if(!renderer)return;
- const now=performance.now(),dt=Math.min(.04,(now-(animateGame.last||now))/1000);animateGame.last=now;
- if(running&&hero){
-  const speed=(sprinting?8.5:5.2)*dt;
-  if(move==='forward')hero.position.z-=speed;
-  if(move==='back')hero.position.z+=speed;
-  if(move==='left')hero.position.x-=speed;
-  if(move==='right')hero.position.x+=speed;
-  hero.position.x=THREE.MathUtils.clamp(hero.position.x,-16,16);
-  hero.position.z=THREE.MathUtils.clamp(hero.position.z,-18,12);
-  enemies.slice().forEach(r=>{
-   const dx=hero.position.x-r.position.x,dz=hero.position.z-r.position.z,d=Math.hypot(dx,dz)||1;
-   r.position.x+=dx/d*r.userData.speed*dt;r.position.z+=dz/d*r.userData.speed*dt;
-   r.lookAt(hero.position.x,1,hero.position.z);
-   if(d<1.5&&now-lastHit>450){
-    health-=r.userData.attack;lastHit=now;updateGameUI();
-    say('Enemy punched you! Move, shoot, or use karate!');
-    if(health<=0){running=false;say('💥 Defeated on level '+level+'. Press Restart to try again.');}
-   }
-  });
-  shots.forEach(s=>{
-   s.mesh.position.z-=.65;s.life--;
-   enemies.slice().forEach(r=>{
-    if(s.life>0&&s.mesh.position.distanceTo(new THREE.Vector3(r.position.x,r.position.y+1.3,r.position.z))<1.25){
-     s.life=0;r.userData.hp--;
-     if(r.userData.hp<=0){
-      scene.remove(r);enemies=enemies.filter(e=>e!==r);score+=50;coins++;updateStats();say('🎯 ENEMY DOWN! +50 points!');
-     }else say('Hit! This enemy needs another shot!');
-     updateGameUI();if(!enemies.length)nextLevel();
+    if (password.value !== confirmPassword.value) {
+      message.textContent = "❌ Passwords do not match.";
+      return;
     }
-   });
+
+    message.textContent =
+      "🛠️ Form checked! Account creation is not connected yet. " +
+      "Connect Supabase to register securely.";
   });
-  shots=shots.filter(s=>{if(s.life<=0){scene.remove(s.mesh);return false;}return true;});
- }
- if(hero&&camera){
-  camera.position.x+=(hero.position.x-camera.position.x)*.07;
-  camera.position.z+=(hero.position.z+9-camera.position.z)*.07;
-  camera.lookAt(hero.position.x,1.1,hero.position.z-2);
- }
- renderer.render(scene,camera);
-}
-function init3D(){
- if(!window.THREE){say('3D engine did not load. Check your internet and refresh.');return;}
- scene=new THREE.Scene();scene.background=new THREE.Color(0x9bdcff);
- scene.fog=new THREE.Fog(0x9bdcff,30,75);
- camera=new THREE.PerspectiveCamera(65,arena.clientWidth/arena.clientHeight,.1,120);
- camera.position.set(0,8,13);
- renderer=new THREE.WebGLRenderer({antialias:true});
- renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
- renderer.setSize(arena.clientWidth,arena.clientHeight);
- arena.innerHTML='';arena.appendChild(renderer.domElement);
- scene.add(new THREE.HemisphereLight(0xffffff,0x304060,2));
- const sun=new THREE.DirectionalLight(0xffffff,2.2);sun.position.set(-5,14,8);scene.add(sun);
- const floor=new THREE.Mesh(new THREE.PlaneGeometry(70,70),mat(0x4fbd86));
- floor.rotation.x=-Math.PI/2;floor.position.y=-.12;scene.add(floor);
- const grid=new THREE.GridHelper(70,35,0xffffff,0x368d76);grid.position.y=-.1;scene.add(grid);
- for(let i=0;i<9;i++){
-  const x=-24+i*6;block(scene,3,3+(i%3),2,0xd7e8ff,x,1,-19);
-  for(let j=0;j<3;j++)block(scene,.35,.35,.1,0x2686c9,x-.8+j*.8,1.5,-17.96);
- }
- for(let i=0;i<14;i++){
-  const x=(Math.random()-.5)*45,z=-7-Math.random()*27;
-  block(scene,.35,1.5,.35,0x80522d,x,.75,z);
-  const leaves=new THREE.Mesh(new THREE.SphereGeometry(1,10,8),mat(0x18894c));
-  leaves.position.set(x,2,z);scene.add(leaves);
- }
- hero=makeMan(0,4,false);updateGameUI();window.addEventListener('resize',resizeGame);
- animateGame();say('Ready! Press Start / Restart to begin.');
-}
-window.addEventListener('keydown',e=>{
- const k=e.key.toLowerCase();
- if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();
- if(k==='w'||k==='arrowup')move='forward';
- if(k==='s'||k==='arrowdown')move='back';
- if(k==='a'||k==='arrowleft')move='left';
- if(k==='d'||k==='arrowright')move='right';
- if(k===' '||e.code==='Space')shoot();
- if(k==='k')karate();
- if(k==='shift')sprinting=true;
-});
-window.addEventListener('keyup',e=>{
- const k=e.key.toLowerCase();
- if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(k))move='';
- if(k==='shift')sprinting=false;
-});
-try{
- if(window.THREE)init3D();
- else{
-  const s=document.createElement('script');
-  s.src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-  s.onload=()=>{try{init3D();}catch(e){say('3D game failed. Refresh the page.');}};
-  s.onerror=()=>say('3D engine unavailable. Check your internet connection.');
-  document.head.appendChild(s);
- }
-}catch(e){say('3D game could not start. Check your internet and refresh.');}
+})();
 </script>
-</body>
-</html>
  
