@@ -1,760 +1,244 @@
- 
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071126">
-<title>Eyoba Universe ✦</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyoba Universe 💙</title>
 <style>
-:root {
-  --bg:#050b19;
-  --panel:#0f1d3ae8;
-  --panel2:#122345;
-  --text:#f4f7ff;
-  --muted:#aab9d7;
-  --cyan:#5df3ff;
-  --blue:#58a6ff;
-  --purple:#a68bff;
-  --line:#7bb8ff44;
-}
-
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; scroll-padding-top:85px; }
-
-body {
-  margin:0;
-  background:
-    radial-gradient(ellipse at 15% 5%,#173e7638,transparent 35%),
-    radial-gradient(ellipse at 85% 35%,#652ba52b,transparent 35%),
-    var(--bg);
-  color:var(--text);
-  font:16px/1.65 system-ui,Segoe UI,sans-serif;
-  transition:background .25s,color .25s;
-}
-
-body.light {
-  --bg:#edf4ff;
-  --panel:#ffffffed;
-  --panel2:#e1ecff;
-  --text:#152442;
-  --muted:#526787;
-  --line:#4673ad44;
-}
-
-a { color:inherit; text-decoration:none; }
-button,input { font:inherit; }
-button { cursor:pointer; }
-.container { width:min(1120px,92%); margin:auto; }
-
-header {
-  position:sticky;
-  top:0;
-  z-index:10;
-  background:var(--bg);
-  border-bottom:1px solid var(--line);
-}
-
-.nav {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  min-height:70px;
-  flex-wrap:wrap;
-}
-
-.brand { font-weight:950; font-size:1.15rem; }
-.brand span,.cyan { color:var(--cyan); }
-
-.links { display:flex; gap:14px; flex-wrap:wrap; }
-.links a { color:var(--muted); font-size:.9rem; }
-.links a:hover { color:var(--cyan); }
-
-.nav button,.btn,.smallbtn {
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:10px 14px;
-  background:var(--panel);
-  color:var(--text);
-}
-
-.btn {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  background:linear-gradient(110deg,var(--cyan),var(--blue));
-  color:#071326;
-  font-weight:850;
-  border:0;
-}
-
-.btn.alt {
-  background:var(--panel);
-  border:1px solid var(--line);
-  color:var(--text);
-}
-
-.hero { padding:65px 0 40px; }
-
-.heroGrid {
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  align-items:center;
-  gap:30px;
-}
-
-.eyebrow,.tag {
-  display:inline-block;
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:5px 11px;
-  color:var(--cyan);
-  background:var(--panel);
-  font-size:.78rem;
-  font-weight:800;
-}
-
-h1 {
-  font-size:clamp(2.7rem,6vw,5rem);
-  line-height:1.04;
-  letter-spacing:-2px;
-  margin:18px 0;
-}
-
-.gradient {
-  background:linear-gradient(100deg,#5df3ff,#74a8ff,#c0a2ff);
-  background-clip:text;
-  color:transparent;
-}
-
-.lead { font-size:1.08rem; color:var(--muted); max-width:640px; }
-.actions { display:flex; gap:10px; flex-wrap:wrap; margin:22px 0; }
-.miniStats { display:flex; gap:22px; flex-wrap:wrap; }
-.miniStats strong { display:block; font-size:1.2rem; }
-.miniStats span { color:var(--muted); font-size:.82rem; }
-
-.spaceArt {
-  min-height:330px;
-  display:grid;
-  place-items:center;
-  position:relative;
-}
-
-.planet {
-  width:190px;
-  height:190px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 25%,#b6ffff,#308ce9 35%,#252d8b 68%,#080c29);
-  box-shadow:0 0 55px #3c9bff66,inset -25px -20px 35px #02051b;
-  position:relative;
-}
-
-.planet:after {
-  content:"";
-  position:absolute;
-  left:-40px;
-  top:70px;
-  width:270px;
-  height:52px;
-  border:12px solid #a3eaff65;
-  border-left-color:transparent;
-  border-right-color:transparent;
-  border-radius:50%;
-  transform:rotate(-24deg);
-}
-
-.orbit {
-  position:absolute;
-  width:320px;
-  height:320px;
-  border:1px solid #5df3ff4a;
-  border-radius:50%;
-  animation:spin 36s linear infinite;
-}
-
-.orbit.two {
-  width:260px;
-  height:260px;
-  border-color:#aa8dff66;
-  animation-direction:reverse;
-  animation-duration:23s;
-}
-
-.orbDot {
-  position:absolute;
-  top:30px;
-  left:60px;
-  width:15px;
-  height:15px;
-  border-radius:50%;
-  background:var(--cyan);
-  box-shadow:0 0 20px var(--cyan);
-}
-
-.float {
-  position:absolute;
-  background:var(--panel);
-  border:1px solid var(--line);
-  padding:10px 13px;
-  border-radius:15px;
-  box-shadow:0 14px 40px #0003;
-}
-
-.float.one { right:0; top:25px; }
-.float.two { left:0; bottom:20px; }
-
-@keyframes spin { to { transform:rotate(360deg); } }
-
-section { padding:45px 0; }
-
-.sectionHead {
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:18px;
-  margin-bottom:22px;
-}
-
-.sectionHead h2 {
-  font-size:clamp(1.8rem,4vw,2.6rem);
-  line-height:1.15;
-  margin:5px 0;
-}
-
-.sectionHead p { color:var(--muted); margin:0; }
-.kicker { font-size:.75rem; letter-spacing:2px; color:var(--cyan); font-weight:900; }
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px;
-}
-
-.card {
-  min-width:0;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:21px;
-  box-shadow:0 18px 48px #0002;
-  transition:transform .2s;
-}
-
-.card:hover { transform:translateY(-3px); }
-.card h3 { margin:9px 0 5px; }
-.card p { color:var(--muted); margin:8px 0 15px; }
-
-.ico {
-  width:50px;
-  height:50px;
-  display:grid;
-  place-items:center;
-  border-radius:16px;
-  background:linear-gradient(135deg,#2c6fd344,#9a7bff32);
-  border:1px solid var(--line);
-  font-size:1.6rem;
-}
-
-.profileGrid { display:grid; grid-template-columns:.8fr 1.2fr; gap:18px; }
-.profile { text-align:center; }
-
-.portrait {
-  width:180px;
-  height:180px;
-  object-fit:cover;
-  object-position:center;
-  border-radius:50%;
-  border:4px solid var(--cyan);
-  box-shadow:0 0 0 9px #58a6ff1c,0 0 38px #58a6ff44;
-  background:var(--panel2);
-}
-
-.level { font-size:2rem; font-weight:950; color:var(--cyan); }
-
-.track {
-  height:10px;
-  border-radius:20px;
-  background:var(--panel2);
-  overflow:hidden;
-  border:1px solid var(--line);
-}
-
-.fill {
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--purple));
-  transition:width .3s;
-}
-
-.stats { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
-
-.stat {
-  background:var(--panel2);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:14px;
-}
-
-.stat span { display:block; color:var(--muted); font-size:.82rem; }
-.stat strong { font-size:1.4rem; }
-
-.mission {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.mission:last-child { border:0; }
-.missionInfo { flex:1; }
-.missionInfo small { display:block; color:var(--muted); }
-.smallbtn:disabled { opacity:.45; cursor:default; }
-
-.destination { font-size:2rem; }
-
-.chatbox {
-  min-height:90px;
-  padding:15px;
-  background:var(--panel2);
-  border-radius:14px;
-  margin-bottom:12px;
-  white-space:pre-wrap;
-}
-
-.chatrow { display:flex; gap:9px; }
-.chatrow input {
-  flex:1;
-  min-width:0;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:11px;
-  background:var(--panel2);
-  color:var(--text);
-}
-
-.notice { font-size:.85rem; color:var(--muted); }
-
-.gallery {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.gallery div {
-  display:grid;
-  place-items:center;
-  min-height:100px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:linear-gradient(135deg,var(--panel),var(--panel2));
-  font-size:2rem;
-}
-
-.quote { font-size:1.4rem; font-weight:750; }
-
-footer {
-  padding:28px 0;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  text-align:center;
-}
-
-@media(max-width:760px) {
-  .heroGrid,.profileGrid { grid-template-columns:1fr; }
-  .spaceArt { min-height:290px; }
-  .grid { grid-template-columns:1fr 1fr; }
-  .links { gap:9px; }
-  .gallery { grid-template-columns:repeat(4,1fr); }
-}
-
-@media(max-width:480px) {
-  .grid { grid-template-columns:1fr; }
-  .links { width:100%; padding-bottom:12px; }
-  .nav { padding:10px 0; }
-  .gallery div { min-height:75px; }
-  .orbit { width:270px; height:270px; }
-  .orbit.two { width:220px; height:220px; }
-}
+:root{--blue:#168cff;--purple:#8b5cf6;--pink:#ff5ca8;--dark:#10152e;--card:#1b2450}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#10152e,#182b59,#392365);color:white;font-family:system-ui,Arial,sans-serif}
+header{padding:25px 15px;text-align:center;background:linear-gradient(120deg,#087bdf,#7c3aed,#ed4899);border-bottom:3px solid #69dcff}
+header h1{font-size:clamp(34px,7vw,62px);margin:0;text-shadow:0 4px 0 #31215e}
+header p{margin:8px 0}
+nav{position:sticky;top:0;z-index:5;background:#10152eee;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:12px}
+a{color:#bcecff}
+nav a{padding:9px 13px;background:#26345f;border-radius:20px;text-decoration:none}
+main{max-width:1100px;margin:auto;padding:18px}
+section{margin:24px 0;padding:24px;border:1px solid #527cdb;border-radius:24px;background:linear-gradient(145deg,#1b2853ee,#211b49ee);box-shadow:0 12px 35px #0004;scroll-margin-top:80px}
+h2{color:#8ee9ff}
+.hero{text-align:center;background:radial-gradient(ellipse at top,#304da4,#211b49 70%)}
+.hyena{font-size:100px;display:block;animation:bounce 1.7s infinite}
+@keyframes bounce{50%{transform:translateY(-9px) rotate(-4deg)}}
+button{border:0;border-radius:14px;padding:12px 17px;font-size:16px;font-weight:bold;cursor:pointer;background:linear-gradient(120deg,#21c8ff,#8b5cf6);color:white;box-shadow:0 4px 0 #332b80;transition:transform .15s}
+button:hover{transform:translateY(-2px)}
+button:active{transform:translateY(2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.stat,.question,.mini-card{background:#111b3b;border:1px solid #3b5caa;border-radius:17px;padding:16px}
+.stat strong{display:block;font-size:25px;color:#8ee9ff}
+.small{color:#c5d3f7}
+.question{margin:14px 0}
+.answers{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:9px;margin-top:12px}
+.answers button{background:#27345e;border:1px solid #566da8;text-align:left;box-shadow:none}
+.answers button.correct{background:#167d54;border-color:#6cffbd}
+.answers button.wrong{background:#a72d4d;border-color:#ff8ba9}
+.feedback{min-height:48px;margin-top:10px;font-weight:bold;color:#fff0a8}
+.big-emoji{font-size:55px;display:block;min-height:62px;text-align:center}
+#gift{background:linear-gradient(135deg,#5d247c,#263da4,#b82f87);text-align:center}
+.gift-icon{font-size:100px;display:block;cursor:pointer;transition:transform .3s}
+.gift-icon:hover{transform:scale(1.12) rotate(8deg)}
+#giftResult{display:none;padding:20px;border-radius:20px;background:#fff;color:#392365;margin-top:15px}
+#gameArea{position:relative;overflow:hidden;height:230px;border:2px solid #75dfff;border-radius:18px;background:linear-gradient(#7fdcff 0 55%,#69c86c 55% 68%,#d7b17b 68%);color:#13234b}
+#gameArea:before{content:"🏫  🏫       🌳     🏫";position:absolute;top:20px;width:100%;text-align:center;font-size:35px}
+#runner{position:absolute;left:15px;bottom:48px;font-size:45px;z-index:2}
+#obstacle{position:absolute;right:20px;bottom:48px;font-size:38px}
+#ground{position:absolute;bottom:0;height:45px;width:100%;background:repeating-linear-gradient(90deg,#d6b17d 0 35px,#b98c60 35px 38px)}
+#gameMsg{position:absolute;top:8px;left:0;right:0;text-align:center;font-weight:bold}
+footer{text-align:center;padding:30px;color:#aebfe9}
+input{max-width:100%;padding:10px;border-radius:10px;border:1px solid #6b91ed}
+@media(max-width:600px){main{padding:10px}section{padding:16px}.hyena{font-size:75px}nav a{font-size:13px;padding:8px}}
 </style>
 </head>
-
 <body>
 <header>
-  <div class="container nav">
-    <a class="brand" href="#home">✦ <span>Eyoba</span> Universe</a>
-    <nav class="links">
-      <a href="#about">About</a>
-      <a href="#missions">Missions</a>
-      <a href="#ethiopia">Ethiopia</a>
-      <a href="#nova">Nova</a>
-      <a href="#quiz">Quiz</a>
-    </nav>
-    <button id="themeToggle" type="button">☀️ Light mode</button>
-  </div>
+<h1>🌌 Eyoba Universe 💙</h1>
+<p>Welcome to Eyoba's crazy world!</p>
+<p>📍 Debrebrhan University · Mehal Meda Campus</p>
 </header>
-
+<nav>
+<a href="#home">🏠 Home</a><a href="#quiz">🧠 Quiz</a><a href="#game">🎮 Game</a><a href="#about">✨ About</a><a href="#gift">🎁 Secret Gift</a>
+</nav>
 <main>
-<section class="hero container" id="home">
-  <div class="heroGrid">
-    <div>
-      <span class="eyebrow">✦ YOUR OWN DIGITAL UNIVERSE</span>
-      <h1>Welcome to <span class="gradient">Eyoba Universe</span></h1>
-      <p class="lead">A personal space for discovery, creativity, challenges, and big dreams. Explore Ethiopia, collect cosmic XP, and level up as you go.</p>
-      <div class="actions">
-        <a class="btn" href="#missions">🚀 Start exploring</a>
-        <a class="btn alt" href="#about">Meet Eyoba</a>
-      </div>
-      <div class="miniStats">
-        <div><strong id="xpTop">0</strong><span>Cosmic XP</span></div>
-        <div><strong id="coinsTop">0</strong><span>Star coins</span></div>
-        <div><strong id="levelTop">1</strong><span>Level</span></div>
-      </div>
-    </div>
-    <div class="spaceArt" aria-label="Animated planet illustration">
-      <div class="orbit"><span class="orbDot"></span></div>
-      <div class="orbit two"></div>
-      <div class="planet"></div>
-      <div class="float one">🌠 Dream big</div>
-      <div class="float two">🪐 Explore more</div>
-    </div>
-  </div>
+<section id="home" class="hero">
+<span class="hyena" aria-label="Cartoon hyena">🐺</span>
+<h2>Hey! I'm Eyoba! 😎</h2>
+<p>Welcome to my universe, where quizzes are crazy and the wind steals your homework!</p>
+<p><strong>My dorm: 304 · My field: BAIS · My favorite color: Blue</strong></p>
+<div class="grid">
+<div class="stat">⭐ Level<strong id="level">1</strong></div>
+<div class="stat">💎 XP Points<strong id="xp">0</strong></div>
+<div class="stat">🪙 Coins<strong id="coins">0</strong></div>
+</div>
+<p><button onclick="dailyJoke()">😂 Make Eyoba Laugh</button></p>
+<div id="joke" class="feedback">Press the button. But don't blame me if you laugh! 🤣</div>
 </section>
 
-<section class="container" id="about">
-  <div class="sectionHead">
-    <div>
-      <div class="kicker">THE CREATOR</div>
-      <h2>👋 About Eyoba</h2>
-      <p>A little corner of the internet made for imagination.</p>
-    </div>
-  </div>
-  <div class="profileGrid">
-    <div class="card profile">
-      <img class="portrait"
-        src="photo_2026-10-14_13-23-48.jpg"
-        alt="Eyoba profile photo"
-        onerror="this.style.display='none';document.getElementById('photoHelp').hidden=false">
-      <p id="photoHelp" hidden class="notice">Upload your photo to the same GitHub folder as index.html, using the exact filename shown in the code.</p>
-      <h3>Eyoba</h3>
-      <span class="tag">Cosmic Explorer ✨</span>
-    </div>
-    <div class="card">
-      <div class="kicker">YOUR JOURNEY</div>
-      <h3 id="level">Level 1</h3>
-      <p id="rank">Curious Explorer</p>
-      <div class="track"><div class="fill" id="bar"></div></div>
-      <p><span id="next">100</span> XP until your next level</p>
-      <div class="stats">
-        <div class="stat"><span>Total XP</span><strong id="xp">0</strong></div>
-        <div class="stat"><span>Star coins</span><strong id="coins">0</strong></div>
-      </div>
-    </div>
-  </div>
+<section id="quiz">
+<h2>🧠 How Well Do You Know Eyoba?</h2>
+<p>Choose an answer! Correct answers get a giant happy emoji. Wrong answers get an angry face and a funny message. 😁</p>
+<div id="quizList"></div>
+<p id="quizSummary" class="feedback">Your adventure starts here! 🚀</p>
+<button onclick="resetQuiz()">🔄 Try the Quiz Again</button>
 </section>
 
-<section class="container" id="missions">
-  <div class="sectionHead">
-    <div>
-      <div class="kicker">SMALL STEPS, BIG DREAMS</div>
-      <h2>🎯 Cosmic Missions</h2>
-      <p>Complete missions to earn XP and coins.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="mission">
-      <div class="ico">🌟</div>
-      <div class="missionInfo"><strong>Claim your welcome bonus</strong><small>Start your adventure with 25 XP.</small></div>
-      <button class="smallbtn" id="bonus">Claim</button>
-    </div>
-    <div class="mission">
-      <div class="ico">🤖</div>
-      <div class="missionInfo"><strong>Say hello to Nova</strong><small>Send Nova a message to earn 20 XP.</small></div>
-      <button class="smallbtn" id="missionNova">Try it</button>
-    </div>
-    <div class="mission">
-      <div class="ico">🧠</div>
-      <div class="missionInfo"><strong>Complete the quiz</strong><small>Answer the Ethiopia quiz correctly.</small></div>
-      <button class="smallbtn" id="missionQuiz">Go to quiz</button>
-    </div>
-    <p class="notice">Your progress is saved in this browser on this device.</p>
-  </div>
+<section id="game">
+<h2>🎮 Eyoba vs. The Mehal Meda Wind</h2>
+<p>Help Hyena Eyoba jump over flying books! Every successful jump gives you coins. Avoid the wind! 🌬️📚</p>
+<div id="gameArea">
+<div id="gameMsg">Tap JUMP to start running!</div>
+<div id="runner">🐺🎒</div>
+<div id="obstacle">📚</div>
+<div id="ground"></div>
+</div>
+<p style="text-align:center">Score: <strong id="gameScore">0</strong></p>
+<div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+<button id="jumpBtn" onclick="jump()">⬆️ JUMP!</button>
+<button onclick="startGame()">▶️ Start / Restart</button>
+</div>
+<p class="small">Game tip: jump over the books. No books were harmed in this adventure. 😂</p>
 </section>
 
-<section class="container" id="ethiopia">
-  <div class="sectionHead">
-    <div>
-      <div class="kicker">DISCOVER YOUR HOME</div>
-      <h2>🇪🇹 Ethiopia Explorer</h2>
-      <p>Explore amazing places and earn cosmic rewards.</p>
-    </div>
-  </div>
-  <div class="grid">
-    <div class="card"><div class="destination">⛰️</div><h3>Simien Mountains</h3><p>Discover dramatic mountain peaks and highland scenery.</p><button class="btn explore" data-name="Simien Mountains">Explore +25 XP</button></div>
-    <div class="card"><div class="destination">🌲</div><h3>Bale Mountains</h3><p>Explore highland forests, wildlife, and peaceful landscapes.</p><button class="btn explore" data-name="Bale Mountains">Explore +25 XP</button></div>
-    <div class="card"><div class="destination">💧</div><h3>Blue Nile Falls</h3><p>Visit the spectacular waterfall known as Tis Abay.</p><button class="btn explore" data-name="Blue Nile Falls">Explore +25 XP</button></div>
-    <div class="card"><div class="destination">⛪</div><h3>Lalibela</h3><p>Explore the famous rock-hewn churches and historic heritage.</p><button class="btn explore" data-name="Lalibela">Explore +25 XP</button></div>
-    <div class="card"><div class="destination">🌊</div><h3>Lake Tana</h3><p>Imagine peaceful waters, islands, and historic monasteries.</p><button class="btn explore" data-name="Lake Tana">Explore +25 XP</button></div>
-    <div class="card"><div class="destination">🏰</div><h3>Gondar</h3><p>Discover historic castles and royal architecture.</p><button class="btn explore" data-name="Gondar">Explore +25 XP</button></div>
-  </div>
+<section id="about">
+<h2>💙 About Eyoba</h2>
+<div class="grid">
+<div class="mini-card">🏠 <strong>My Dorm</strong><p>Room 304</p></div>
+<div class="mini-card">🎓 <strong>My Field</strong><p>BAIS</p></div>
+<div class="mini-card">📱 <strong>My Phone</strong><p>iPhone</p></div>
+<div class="mini-card">🎨 <strong>My Favorite Color</strong><p>Blue 💙</p></div>
+<div class="mini-card">🧠 <strong>My Personality</strong><p>Kind and smart</p></div>
+<div class="mini-card">✏️ <strong>My Hobby</strong><p>Drawing</p></div>
+</div>
+<h2>🌟 Five Extra Fun Questions</h2>
+<p>These five are just for fun. Their answers aren't personal facts unless Eyoba confirms them!</p>
+<div class="grid">
+<div class="mini-card">1. What would Eyoba choose for a free day?<p><button onclick="extraAnswer(this,'Correct! A free day is for relaxing! 😎')">Relaxing 😴</button></p><p><button onclick="extraAnswer(this,'Wrong! The homework monster is still waiting! 📚')">Extra homework 📚</button></p><div class="feedback"></div></div>
+<div class="mini-card">2. What superpower would be funniest at campus?<p><button onclick="extraAnswer(this,'Correct! Imagine flying notebooks! 😂')">Control the wind 🌬️</button></p><p><button onclick="extraAnswer(this,'Wrong! Try another superpower! 🦸')">Become a potato 🥔</button></p><div class="feedback"></div></div>
+<div class="mini-card">3. What is the best study snack?<p><button onclick="extraAnswer(this,'Correct! Snack time champion! 🍕')">Pizza 🍕</button></p><p><button onclick="extraAnswer(this,'Wrong! That snack might be too crunchy! 😂')">A notebook 📒</button></p><div class="feedback"></div></div>
+<div class="mini-card">4. What happens when the wind attacks?<p><button onclick="extraAnswer(this,'Correct! Save the notebook! 🌬️📒')">Chase flying papers 🏃</button></p><p><button onclick="extraAnswer(this,'Wrong! The wind wins this round! 🤣')">Argue with the wind 😤</button></p><div class="feedback"></div></div>
+<div class="mini-card">5. What should Eyoba's friends bring?<p><button onclick="extraAnswer(this,'Correct! Friendship level unlocked! 💙')">Good vibes 💙</button></p><p><button onclick="extraAnswer(this,'Wrong! Nobody invited the homework monster! 📚')">More exams 📝</button></p><div class="feedback"></div></div>
+</div>
+<p class="small">The extra questions are silly mini-games, not verified facts about Eyoba.</p>
 </section>
 
-<section class="container" id="nova">
-  <div class="sectionHead">
-    <div>
-      <div class="kicker">YOUR COSMIC COMPANION</div>
-      <h2>🤖 Meet Nova</h2>
-      <p>Ask for a joke, inspiration, or a destination idea.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="chatbox" id="chat">Nova: Hello, cosmic explorer! Welcome to Eyoba Universe. 🌌</div>
-    <div class="chatrow">
-      <input id="message" type="text" placeholder="Say hello or ask for a joke..." aria-label="Message to Nova">
-      <button class="btn" id="send">Send</button>
-    </div>
-    <div class="actions">
-      <button class="smallbtn quick" data-msg="joke">😂 Tell me a joke</button>
-      <button class="smallbtn quick" data-msg="place">🗺️ Suggest a place</button>
-      <button class="smallbtn quick" data-msg="motivate">✨ Motivate me</button>
-    </div>
-    <p class="notice">Nova is a built-in demo companion. It does not connect to an online AI service.</p>
-  </div>
-</section>
-
-<section class="container" id="quiz">
-  <div class="sectionHead">
-    <div>
-      <div class="kicker">TEST YOUR KNOWLEDGE</div>
-      <h2>🧠 Universe Quiz</h2>
-      <p>Answer correctly to earn cosmic rewards.</p>
-    </div>
-  </div>
-  <div class="card">
-    <h3>Which Ethiopian town is famous for its rock-hewn churches?</h3>
-    <div class="actions">
-      <button class="smallbtn answer" data-correct="false">Gondar</button>
-      <button class="smallbtn answer" data-correct="true">Lalibela</button>
-      <button class="smallbtn answer" data-correct="false">Bale Mountains</button>
-    </div>
-    <p id="quizResult" aria-live="polite"></p>
-  </div>
-</section>
-
-<section class="container" id="gallery">
-  <div class="sectionHead">
-    <div>
-      <div class="kicker">A UNIVERSE OF IDEAS</div>
-      <h2>🎨 Cosmic Gallery</h2>
-      <p>A little collection of imagination and discovery.</p>
-    </div>
-  </div>
-  <div class="gallery">
-    <div>🌌</div><div>🪐</div><div>🚀</div><div>🌠</div>
-    <div>🌍</div><div>✨</div><div>🛰️</div><div>🌙</div>
-  </div>
-</section>
-
-<section class="container" id="inspiration">
-  <div class="card">
-    <div class="kicker">A MESSAGE FOR YOU</div>
-    <p class="quote" id="quote">“Great journeys begin with a curious mind.”</p>
-    <button class="btn" id="newQuote">✨ New Inspiration</button>
-  </div>
+<section id="gift">
+<h2>🎁 The Secret Friendship Gift</h2>
+<p>You completed your mission. Tap the gift box to discover your surprise!</p>
+<span class="gift-icon" role="button" tabindex="0" aria-label="Open the gift box" onclick="openGift()" onkeydown="if(event.key==='Enter'||event.key===' '){openGift()}">🎁</span>
+<button onclick="openGift()">OPEN MY GIFT! 💌</button>
+<div id="giftResult">
+<div style="font-size:70px">🎉💙🎉</div>
+<h2>CONGRATULATIONS!</h2>
+<h3>Eyoba accepted your friend request! 🤝</h3>
+<p>Welcome to the Eyoba Universe family!</p>
+<p>🏆 You are officially a Friendship Explorer!</p>
+<p class="small">This is a playful website surprise, not a real social-media request.</p>
+<button onclick="this.parentElement.style.display='none'">Keep Exploring 🚀</button>
+</div>
 </section>
 </main>
-
-<footer>
-  <div class="container">
-    ✦ <strong>Eyoba Universe</strong> · Created with imagination 💙
-    <p>Stay curious. Keep exploring. Never stop dreaming.</p>
-    <a href="#home">⬆ Back to top</a>
-  </div>
-</footer>
-
+<footer>Made with 💙 for Eyoba Universe · Mehal Meda Campus 🌍</footer>
 <script>
-(function(){
-  let xp=0, coins=0, bonus=false, done={}, quizDone=false;
-
-  try {
-    const saved=JSON.parse(localStorage.getItem("eyobaUniverseSave")||"null");
-    if(saved){
-      xp=saved.xp||0;
-      coins=saved.coins||0;
-      bonus=!!saved.bonus;
-      done=saved.done||{};
-      quizDone=!!saved.quizDone;
-    }
-    if(localStorage.getItem("eyobaUniverseTheme")==="light"){
-      document.body.classList.add("light");
-    }
-  } catch(e) {}
-
-  const $=id=>document.getElementById(id);
-
-  function level(){return Math.floor(xp/100)+1;}
-
-  function rank(){
-    if(level()>=10)return "Universe Legend";
-    if(level()>=5)return "Cosmic Explorer";
-    if(level()>=3)return "Star Navigator";
-    return "Curious Explorer";
-  }
-
-  function save(){
-    try {
-      localStorage.setItem("eyobaUniverseSave",JSON.stringify({
-        xp,coins,bonus,done,quizDone
-      }));
-    } catch(e) {}
-  }
-
-  function render(){
-    $("xp").textContent=xp;
-    $("xpTop").textContent=xp;
-    $("coins").textContent=coins;
-    $("coinsTop").textContent=coins;
-    $("levelTop").textContent=level();
-    $("level").textContent="Level "+level();
-    $("rank").textContent=rank();
-    $("bar").style.width=(xp%100)+"%";
-    $("next").textContent=100-(xp%100);
-    $("bonus").disabled=bonus;
-    $("bonus").textContent=bonus?"Claimed":"Claim";
-
-    document.querySelectorAll(".explore").forEach(b=>{
-      b.disabled=!!done[b.dataset.name];
-      if(done[b.dataset.name])b.textContent="Explored ✓";
-    });
-
-    $("missionNova").disabled=!!done.nova;
-    $("missionNova").textContent=done.nova?"Completed":"Try it";
-    $("missionQuiz").disabled=quizDone;
-    $("missionQuiz").textContent=quizDone?"Completed":"Go to quiz";
-
-    if(quizDone){
-      document.querySelectorAll(".answer").forEach(b=>b.disabled=true);
-    }
-  }
-
-  function reward(amount,coinAmount){
-    xp+=amount;
-    coins+=coinAmount;
-    save();
-    render();
-  }
-
-  $("themeToggle").addEventListener("click",()=>{
-    document.body.classList.toggle("light");
-    const light=document.body.classList.contains("light");
-    $("themeToggle").textContent=light?"🌙 Dark mode":"☀️ Light mode";
-    try {
-      localStorage.setItem("eyobaUniverseTheme",light?"light":"dark");
-    } catch(e) {}
-  });
-
-  $("bonus").addEventListener("click",()=>{
-    if(!bonus){
-      bonus=true;
-      reward(25,10);
-    }
-  });
-
-  document.querySelectorAll(".explore").forEach(b=>{
-    b.addEventListener("click",()=>{
-      const name=b.dataset.name;
-      if(!done[name]){
-        done[name]=true;
-        reward(25,5);
-      }
-    });
-  });
-
-  function talk(message){
-    const m=message.toLowerCase();
-    let reply;
-
-    if(m.includes("joke")){
-      reply="Why did the star go to school? To become a little brighter! ⭐";
-    } else if(m.includes("place")||m.includes("ethiopia")||m.includes("travel")){
-      reply="Try Lalibela for its remarkable rock-hewn churches, or the Simien Mountains for spectacular scenery. 🇪🇹";
-    } else if(m.includes("motivat")||m.includes("dream")||m.includes("sad")){
-      reply="Every big journey starts with one small step. You can do this! ✨";
-    } else {
-      reply="Hello! I'm Nova. Ask me for a joke, a place to explore, or a little motivation. 🌌";
-    }
-
-    $("chat").textContent="You: "+message+"\n\nNova: "+reply;
-
-    if(!done.nova){
-      done.nova=true;
-      reward(20,5);
-    }
-  }
-
-  $("send").addEventListener("click",()=>{
-    const value=$("message").value.trim();
-    if(value){
-      talk(value);
-      $("message").value="";
-    }
-  });
-
-  $("message").addEventListener("keydown",e=>{
-    if(e.key==="Enter")$("send").click();
-  });
-
-  document.querySelectorAll(".quick").forEach(b=>{
-    b.addEventListener("click",()=>talk(b.dataset.msg));
-  });
-
-  $("missionNova").addEventListener("click",()=>{
-    $("nova").scrollIntoView({behavior:"smooth"});
-  });
-
-  $("missionQuiz").addEventListener("click",()=>{
-    $("quiz").scrollIntoView({behavior:"smooth"});
-  });
-
-  document.querySelectorAll(".answer").forEach(b=>{
-    b.addEventListener("click",()=>{
-      if(quizDone)return;
-
-      quizDone=true;
-
-      if(b.dataset.correct==="true"){
-        $("quizResult").textContent="Correct! Lalibela is famous for its rock-hewn churches. +30 XP 🎉";
-        reward(30,10);
-      } else {
-        $("quizResult").textContent="Good try! The correct answer is Lalibela.";
-        save();
-        render();
-      }
-
-      document.querySelectorAll(".answer").forEach(x=>x.disabled=true);
-    });
-  });
-
-  const quotes=[
-    "“Great journeys begin with a curious mind.”",
-    "“Your future is built by the small things you do today.”",
-    "“Stay curious. Your next idea could change everything.”",
-    "“Even the brightest stars started as dust.”"
-  ];
-
-  $("newQuote").addEventListener("click",()=>{
-    $("quote").textContent=quotes[Math.floor(Math.random()*quotes.length)];
-  });
-
-  render();
-
-  if(document.body.classList.contains("light")){
-    $("themeToggle").textContent="🌙 Dark mode";
-  }
-})();
+const questions=[
+{q:"Which dorm is Eyoba in?",a:["302","304","205","309"],c:1},
+{q:"What field does Eyoba study?",a:["BAIS","Leadership and Organization","Management","Finance"],c:0},
+{q:"Which phone does Eyoba use?",a:["Samsung","Infinix","iPhone","Tecno"],c:2},
+{q:"What is Eyoba's favorite color?",a:["Black","White","Red","Blue"],c:3},
+{q:"How would you describe Eyoba?",a:["Smart","Fool","Kind","Aggressive"],c:0,also:[2]},
+{q:"What is Eyoba's hobby?",a:["Sport","Drawing","Eating","Reading"],c:1},
+{q:"Which color makes Eyoba happiest?",a:["Blue","Orange","Brown","Grey"],c:0},
+{q:"What would Eyoba protect from the campus wind?",a:["His notebook","A cloud","A potato","The moon"],c:0},
+{q:"What is Eyoba's study field?",a:["BAIS","Astronaut potato studies","Underwater dancing","Cloud counting"],c:0},
+{q:"What should a good friend bring?",a:["Kindness and laughter","More homework","A tornado","An angry chicken"],c:0},
+{q:"What is the Eyoba Universe motto?",a:["Dream, study, create, explore","Sleep through every class","Fight every notebook","Run from all snacks"],c:0}
+];
+let xp=0,coins=0,answered=new Set(),gameTimer=null,gameActive=false,score=0,jumpBusy=false;
+function renderQuiz(){
+const list=document.getElementById('quizList');list.innerHTML='';
+questions.forEach((q,i)=>{
+const box=document.createElement('div');box.className='question';box.innerHTML='<strong>'+(i+1)+'. '+q.q+'</strong><div class="answers"></div><span class="big-emoji" id="emoji'+i+'"></span><div class="feedback" id="feedback'+i+'"></div>';
+const answers=box.querySelector('.answers');
+q.a.forEach((a,j)=>{const b=document.createElement('button');b.textContent=String.fromCharCode(65+j)+'. '+a;b.onclick=()=>answer(i,j,b);answers.appendChild(b)});
+list.appendChild(box);
+});
+}
+function answer(i,j,btn){
+if(answered.has(i))return;
+answered.add(i);
+const q=questions[i],good=j===q.c||(q.also||[]).includes(j);
+const box=btn.closest('.question');
+box.querySelectorAll('button').forEach(b=>b.disabled=true);
+if(good){
+btn.classList.add('correct');document.getElementById('emoji'+i).textContent='🤩🎉💙';
+document.getElementById('feedback'+i).textContent='CORRECT! You know Eyoba well! +10 XP and +5 coins!';
+xp+=10;coins+=5;
+}else{
+btn.classList.add('wrong');document.getElementById('emoji'+i).textContent='😡💢';
+document.getElementById('feedback'+i).textContent='WRONG! Eyoba is giving you the angry face! 😂 Correct answer: '+q.a[q.c]+'.';
+}
+updateStats();
+document.getElementById('quizSummary').textContent='Answered '+answered.size+' of '+questions.length+' questions!';
+if(answered.size===questions.length){
+document.getElementById('quizSummary').textContent='Quiz complete! You earned '+xp+' XP and '+coins+' coins. '+(xp>=70?'Eyoba is impressed! 🏆':'Try again to improve your score! 😄');
+}
+}
+function updateStats(){
+document.getElementById('xp').textContent=xp;
+document.getElementById('coins').textContent=coins;
+document.getElementById('level').textContent=1+Math.floor(xp/50);
+}
+function resetQuiz(){answered.clear();renderQuiz();document.getElementById('quizSummary').textContent='Fresh start! Show Eyoba what you know! 🚀'}
+function dailyJoke(){
+const jokes=[
+"Mehal Meda wind is so strong, even the Wi-Fi needs a jacket! 🌬️😂",
+"Eyoba's notebook flew away. Now the wind is studying BAIS! 📒🤣",
+"Eyoba ran so fast, even his backpack asked for a taxi! 🎒😂",
+"Exam question: What is the speed of wind? Answer: Faster than my homework! 🌪️",
+"Eyoba is so kind that he thanked the wind for stealing his notes. 😭💙"
+];
+document.getElementById('joke').textContent=jokes[Math.floor(Math.random()*jokes.length)];
+}
+function extraAnswer(btn,msg){
+const parent=btn.closest('.mini-card');
+parent.querySelectorAll('button').forEach(b=>b.disabled=true);
+parent.querySelector('.feedback').textContent=msg;
+}
+function openGift(){
+document.getElementById('giftResult').style.display='block';
+document.getElementById('giftResult').scrollIntoView({behavior:'smooth',block:'center'});
+document.querySelector('.gift-icon').textContent='🎉';
+if(!window.giftOpened){window.giftOpened=true;xp+=25;coins+=20;updateStats()}
+}
+function startGame(){
+clearInterval(gameTimer);gameActive=true;score=0;jumpBusy=false;
+document.getElementById('gameScore').textContent=score;
+document.getElementById('obstacle').style.right='20px';
+document.getElementById('runner').style.bottom='48px';
+document.getElementById('gameMsg').textContent='RUN, EYOBA! WATCH OUT FOR BOOKS!';
+gameTimer=setInterval(()=>{
+if(!gameActive)return;
+let ob=document.getElementById('obstacle');
+let r=parseInt(ob.style.right||20);
+r+=9;if(r>document.getElementById('gameArea').clientWidth+20)r=-40;
+ob.style.right=r+'px';
+let player=document.getElementById('runner');
+if(r>document.getElementById('gameArea').clientWidth-100&&r<document.getElementById('gameArea').clientWidth-30&&!jumpBusy){
+gameActive=false;clearInterval(gameTimer);
+document.getElementById('gameMsg').textContent='BONK! The books won! 😂 Press Start to try again.';
+return;
+}
+if(r===-40){score+=1;document.getElementById('gameScore').textContent=score;coins+=1;updateStats()}
+},80);
+}
+function jump(){
+if(!gameActive){startGame();return}
+if(jumpBusy)return;
+jumpBusy=true;
+document.getElementById('runner').style.bottom='125px';
+setTimeout(()=>{document.getElementById('runner').style.bottom='48px';jumpBusy=false},650);
+}
+renderQuiz();
 </script>
 </body>
-</html>
+</html> 
